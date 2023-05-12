@@ -1,5 +1,6 @@
 <template>
   <div id="mapContainer">
+    
     <button style="z-index: 500; color: black;">HelloWorld</button>
   </div>
 </template>
@@ -24,14 +25,16 @@
       var customPane = this.map.createPane("customPane");
       var canvasRenderer = L.canvas({ pane: "customPane" });
       customPane.style.zIndex = 399; // put just behind the standard overlay pane which is at 400
-      L.marker([50, 14]).bindPopup('The center of the world').addTo(this.map);
-      L.marker([53, 20]).addTo(this.map);
-      L.marker([49.5, 19.5]).addTo(this.map);
-      L.marker([49, 25]).addTo(this.map);
-      L.marker([-10, 25]).addTo(this.map);
-      L.marker([10, -25]).addTo(this.map);
-      L.marker([0, 0]).addTo(this.map);
-      L.LControlZoom
+      for(var i=0;i<5;i++){
+        L.marker([53, 20*i]).addTo(this.map);
+      }
+      // L.marker([50, 14]).bindPopup('The center of the world').addTo(this.map);
+      // L.marker([53, 20]).addTo(this.map);
+      // L.marker([49.5, 19.5]).addTo(this.map);
+      // L.marker([49, 25]).addTo(this.map);
+      // L.marker([-10, 25]).addTo(this.map);
+      // L.marker([10, -25]).addTo(this.map);
+      // L.marker([0, 0]).addTo(this.map);
     },
     onBeforeUnmount() {
       if (this.map) {
