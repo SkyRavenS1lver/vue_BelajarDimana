@@ -28,6 +28,10 @@
       for(var i=0;i<5;i++){
         L.marker([53, 20*i]).addTo(this.map);
       }
+      L.control.zoom({
+    position: 'topright'
+    }).addTo(this.map);
+      
       // L.marker([50, 14]).bindPopup('The center of the world').addTo(this.map);
       // L.marker([53, 20]).addTo(this.map);
       // L.marker([49.5, 19.5]).addTo(this.map);

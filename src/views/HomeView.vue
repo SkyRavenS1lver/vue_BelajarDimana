@@ -5,7 +5,6 @@ import Cards from '../components/Cards.vue';
 
 <template>
   <main>
-    <!-- <TheWelcome /> -->
     <div class='flex-wrap flex mx-[9rem]'>
       <Cards/>
       <Cards/>
