@@ -7,8 +7,18 @@
           name="OpenStreetMap"
         ></l-tile-layer>
         <!-- <l-marker :lat-lng="[47.7515953048815, 8.757179159967961]" /> -->
-        <template v-for="coordinate in coordinates">
-          <l-marker :lat-lng="coordinate" />
+        <template v-for="coordinate in coordinates" :key="coordinate">
+          <l-marker  :lat-lng="coordinate" >
+            <l-popup ref="popup">
+              KONTOL
+             </l-popup>
+          </l-marker>
+            
+          
+  
+            
+            
+          
         </template>
       </l-map>
     </div>
@@ -16,13 +26,14 @@
   
   <script>
   import "leaflet/dist/leaflet.css";
-  import { LMap, LTileLayer,LMarker } from "@vue-leaflet/vue-leaflet";
+  import { LMap, LTileLayer,LMarker, LPopup } from "@vue-leaflet/vue-leaflet";
   
   export default {
     components: {
       LMap,
       LTileLayer,
-      LMarker
+      LMarker,
+      LPopup,
     },
     data() {
       return {
