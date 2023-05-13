@@ -1,6 +1,7 @@
 {
   "name": "belajar-dimana",
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "homepage": "https://belajardimana.com",
   "private": true,
   "scripts": {
     "dev": "vite",
