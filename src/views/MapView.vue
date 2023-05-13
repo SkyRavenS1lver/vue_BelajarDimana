@@ -16,7 +16,6 @@ import Cards from '../components/Cards.vue';
         <l-marker  :lat-lng="coordinate" >
           <l-icon :icon-size= [40,40] icon-url="https://i.ibb.co/4sQs8L1/location.png"> </l-icon>
           <l-popup ref="popup">
-            <Cards/>
            </l-popup>
         </l-marker>
           

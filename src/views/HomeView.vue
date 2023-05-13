@@ -7,7 +7,7 @@ import Cards from '../components/Cards.vue';
   <main>
     <div class='flex-wrap flex mx-[9rem]'>
       <template v-for="post in posts" v-bind:key="post.id">
-        <Cards :msg="post.nama"/>
+        <Cards :msg="post"/>
       </template>
       <!-- <Cards/>
       <Cards/>
@@ -45,6 +45,7 @@ export default {
         fetch("https://api.belajardimana.com", { headers })
         .then(response => response.json())
         .then(data => (this.posts = data));
+        
 
       } catch (error) {
         console.log(error);
@@ -54,6 +55,7 @@ export default {
 
   created() {
     this.getData();
+    console.log(this.posts);
   },
 };
 </script>
