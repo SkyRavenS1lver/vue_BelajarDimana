@@ -1,3 +1,12 @@
+<script setup>
+defineProps({
+  msg: {
+    type: String,
+    required: true
+  }
+})
+</script>
+
 <template>
     
         <div class='m-[3rem]'>
@@ -5,7 +14,7 @@
                 <img class="w-full" src="https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png" 
                 alt="Placeholder image">
                 <div class="px-6 py-4">
-                    <div class="font-bold text-xl mb-1">Sekolah Coding</div>
+                    <div class="font-bold text-xl mb-1">{{ msg }}</div>
                     <p class="text-gray-700 text-sm">
                         Pemrograman
                     </p>
