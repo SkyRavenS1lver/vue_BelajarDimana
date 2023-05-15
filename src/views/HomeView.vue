@@ -8,22 +8,7 @@ import Cards from '../components/Cards.vue';
     <div class='flex-wrap flex mx-[9rem]'>
       <template v-for="post in posts" v-bind:key="post.id">
         <Cards :msg="post"/>
-      </template>
-      <!-- <Cards/>
-      <Cards/>
-      <Cards/>
-      <Cards/>
-      <Cards/>
-      <Cards/>
-      <Cards/>
-      <Cards/><Cards/>
-      <Cards/>
-      <Cards/>
-      <Cards/><Cards/>
-      <Cards/>
-      <Cards/>
-      <Cards/> -->
-      
+      </template>   
     </div>
   </main>
 </template>
@@ -39,8 +24,6 @@ export default {
   methods: {
     async getData() {
       try {
-        // let response = await fetch("http://api.belajardimana.com/api");
-        // this.posts = await response.json();
         const headers = { "Content-Type": "application/json"};
         fetch("https://api.belajardimana.com", { headers })
         .then(response => response.json())

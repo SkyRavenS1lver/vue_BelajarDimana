@@ -1,13 +1,16 @@
+<script setup>
+import PercobaanSlider from './PercobaanSlider.vue';
+</script>
 <template>
   <div class="modal-overlay" @click="$emit('close-modal')">
     <div class="modal" @click.stop>
-      <img class="check" src="https://i.ibb.co/1s9mnsV/logo-baru.png" alt="" />
-      <h6>Saved!</h6>
-      <p>Your Details have been saved Successfully</p>
-      <button>Go Home</button>
+      <div class="text-black">
+
+        <PercobaanSlider/>
+      </div>
     </div>
     <div class="close" @click="$emit('close-modal')">
-      <img class="close-img" src="https://i.ibb.co/1s9mnsV/logo-baru.png" alt="" />
+      <img class="close-img" src="https://i.ibb.co/DpZCx6W/close.png" alt="" />
     </div>
   </div>
 </template>
