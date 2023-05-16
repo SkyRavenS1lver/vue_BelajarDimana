@@ -14,9 +14,6 @@ if(props.msg.biayaDiskon){
 else{
     a = props.msg.biayaOri;
 }
-// let html = document.getElementById("Harga");
-console.log(props.msg.biayaDiskon);
-// console.log();
 </script>
 
 <template>

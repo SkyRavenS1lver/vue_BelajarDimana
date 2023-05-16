@@ -1,4 +1,5 @@
 <script setup>
+import { RouterLink } from 'vue-router'
 import Cards from '../components/Cards.vue';
 </script>
 
@@ -7,7 +8,10 @@ import Cards from '../components/Cards.vue';
   <main>
     <div class='flex-wrap flex mx-[9rem]'>
       <template v-for="post in posts" v-bind:key="post.id">
-        <Cards :msg="post"/>
+        <RouterLink :to="{ name: 'Profile', params:{id:post.id}}">
+          <Cards :msg="post"/>
+        </RouterLink>
+        
       </template>   
     </div>
   </main>
@@ -15,9 +19,11 @@ import Cards from '../components/Cards.vue';
 
 <script>
 export default {
+  name:'home',
   data() {
     return {
       posts: [],
+      msg:'Jancuk'
     };
   },
 
