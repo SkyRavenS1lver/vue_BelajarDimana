@@ -8,20 +8,54 @@ const props = defineProps({
 
 </script>
 
-
-<!-- <template>
-  <main>
-    <p>{{ obj.nama }}</p>
-    <p>{{ obj.durasiTotal }}</p>
-    <p>{{ obj.durasiMinggu }}</p>
-    <p>{{ obj.biayaOri }}</p>
-    <p>{{ obj.biayaDiskon }}</p>
-    <p>{{ obj.linkWeb }}</p>
-    <p>{{ obj.publisher }}</p>
-  </main>
-</template> -->
 <template>
     <main>
-      <p>{{ props.id }}</p>
+      <template v-for="post in posts" v-bind:key="post.id">
+        <p>{{ post.publisher }}</p>
+        <p>{{ post.nama }}</p>
+        <p>{{ post.durasiTotal }} Bulan</p>
+        <p>{{ post.durasiMinggu }} Pertemuan Per Minggu</p>
+        <p v-if="post.biayaDiskon">Rp {{ post.biayaDiskon }}</p>
+        <p v-else>Rp {{ post.biayaOri }}</p>
+        <a v-bind:href="post.linkWeb">{{ post.linkWeb }}</a>
+      </template>
     </main>
   </template>
+
+  <script>
+export default {
+  name:'Profile',
+  data() {
+    return {
+      posts: [],
+    };
+  },
+
+  created() {
+    this.$watch(
+      () => this.$route.params,
+      () => {
+        this.getData()
+      },
+      { immediate: true }
+    );
+  },  
+
+  methods: {
+    async getData() {
+      try {
+        const headers = { "Content-Type": "application/json"};
+        fetch("https://api.belajardimana.com?Id="+this.$route.params.id, { headers })
+        .then(response => response.json())
+        .then(data => (this.posts = data));
+        
+
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+
+  
+};
+</script>
