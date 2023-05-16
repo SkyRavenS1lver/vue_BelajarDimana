@@ -11,10 +11,10 @@ const props = defineProps({
 <template>
     <main>
       <template v-for="post in posts" v-bind:key="post.id">
-        <p>{{ post.publisher }}</p>
-        <p>{{ post.nama }}</p>
-        <p>{{ post.durasiTotal }} Bulan</p>
-        <p>{{ post.durasiMinggu }} Pertemuan Per Minggu</p>
+        <p v-if="post.publisher">{{ post.publisher }}</p>
+        <p v-if="post.nama">{{ post.nama }}</p>
+        <p v-if="post.durasiTotal">{{ post.durasiTotal }} Minggu</p>
+        <p v-if="post.durasiMinggu">{{ post.durasiMinggu }} Pertemuan Per Minggu</p>
         <p v-if="post.biayaDiskon">Rp {{ post.biayaDiskon }}</p>
         <p v-else>Rp {{ post.biayaOri }}</p>
         <a v-bind:href="post.linkWeb">{{ post.linkWeb }}</a>
