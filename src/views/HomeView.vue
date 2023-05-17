@@ -7,12 +7,21 @@ import Cards from '../components/Cards.vue';
 <template>
   <main>
     <div class='flex-wrap flex mx-[9rem]'>
-      <template v-for="post in posts" v-bind:key="post.id">
+      <template v-for="post in posts" v-bind:key="post.nama">
+        <RouterLink v-if="post.idOC" :to="{ name: 'Profile', params:{id:post.idOC, mode:OC}}">
+          <Cards :msg="post"/>
+        </RouterLink>
+        <RouterLink v-else :to="{ name: 'Profile', params:{id:post.idFC, mode:FC}}">
+          <Cards :msg="post"/>
+        </RouterLink>
+      </template> 
+
+      <!-- <template v-for="post in posts" v-bind:key="post.id">
         <RouterLink :to="{ name: 'Profile', params:{id:post.id}}">
           <Cards :msg="post"/>
         </RouterLink>
-        
-      </template>   
+      </template>    -->
+
     </div>
   </main>
 </template>
@@ -23,7 +32,9 @@ export default {
   data() {
     return {
       posts: [],
-      msg:'Jancuk'
+      postsFC:[],
+      OC:'OC',
+      FC: 'FC'
     };
   },
 
@@ -34,8 +45,6 @@ export default {
         fetch("https://api.belajardimana.com", { headers })
         .then(response => response.json())
         .then(data => (this.posts = data));
-        
-
       } catch (error) {
         console.log(error);
       }
