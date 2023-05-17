@@ -12,7 +12,7 @@ import { RouterLink } from 'vue-router'
                 <!-- flex isi logo + teks belajar dimana -->
                 <div class='flex'>
                     <div class='mr-6'>
-                        <img src="https://i.ibb.co/1s9mnsV/logo-baru.png" class='w-[40px] h-[40px]'>
+                        <img src="http://belajardimana.com/gambar/logo-baru.png" class='w-[40px] h-[40px]'>
                     </div>    
                     <div class='mr-6'>
                         <RouterLink to="/">
@@ -46,7 +46,7 @@ import { RouterLink } from 'vue-router'
                                 
                                 <!-- logo search -->
                                 <div class="grid place-items-center h-full w-12 text-gray-300 ">
-                                    <img src="https://i.ibb.co/6b1L8xd/search.png" alt="">
+                                    <img src="http://belajardimana.com/gambar/search.png" alt="">
                                 </div>
   
   
@@ -64,7 +64,7 @@ import { RouterLink } from 'vue-router'
                         <div class='flex'>
                             Lihat Peta
                             <br>    
-                            <img src="https://i.ibb.co/7z6kvXP/Map-Trifold.png" alt="map" class='ml-[0.5rem]'>
+                            <img src="http://belajardimana.com/gambar/Map-Trifold.png" alt="map" class='ml-[0.5rem]'>
                         </div>
                        
                     </button>

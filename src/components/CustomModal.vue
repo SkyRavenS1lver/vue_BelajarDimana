@@ -10,7 +10,7 @@ import PercobaanSlider from './PercobaanSlider.vue';
       </div>
     </div>
     <div class="close" @click="$emit('close-modal')">
-      <img class="close-img" src="https://i.ibb.co/DpZCx6W/close.png" alt="" />
+      <img class="close-img" src="http://belajardimana.com/gambar/close.png" alt="" />
     </div>
   </div>
 </template>

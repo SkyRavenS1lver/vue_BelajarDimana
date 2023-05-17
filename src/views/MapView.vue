@@ -14,7 +14,7 @@ import Cards from '../components/Cards.vue';
       <!-- <l-marker :lat-lng="[47.7515953048815, 8.757179159967961]" /> -->
       <template v-for="post in posts" :key="post.idFC">
         <l-marker  :lat-lng="[post.latitude, post.longitude]">
-          <l-icon :icon-size= [40,40] icon-url="https://i.ibb.co/4sQs8L1/location.png"> </l-icon>
+          <l-icon :icon-size= [40,40] icon-url="http://belajardimana.com/gambar/location.png"> </l-icon>
           <l-popup ref="popup">
             {{ post.nama }}
            </l-popup>

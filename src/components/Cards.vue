@@ -21,7 +21,7 @@ else{
         <div class='m-[3rem]'>
             <a href="#">
             <div class="max-w-sm rounded-xl overflow-hidden shadow-lg border-2">
-                <img class="w-full" src="https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png" 
+                <img class="w-full" src="http://belajardimana.com/gambar/placeholder.png" 
                 alt="Placeholder image">
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-1">{{ msg.nama }}</div>
