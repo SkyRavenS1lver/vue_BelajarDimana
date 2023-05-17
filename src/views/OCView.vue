@@ -11,15 +11,34 @@ const props = defineProps({
 <template>
     <main>
       <template v-for="post in posts" v-bind:key="post.id">
-        <p v-if="post.publisher">{{ post.publisher }}</p>
-        <p v-if="post.nama">{{ post.nama }}</p>
-        <p v-if="post.alamat">{{ post.alamat }}</p>
-        <p v-if="post.durasiTotal">{{ post.durasiTotal }} Minggu</p>
-        <p v-if="post.durasiMinggu">{{ post.durasiMinggu }} Pertemuan Per Minggu</p>
-        <p v-if="post.biayaDiskon">Rp {{ post.biayaDiskon }}</p>
-        <p v-else-if="post.biayaOri">Rp {{ post.biayaOri }}</p>
+        <div v-if="post.publisher">
+          <!-- Awakmu cuma perlu nambah nang njero div ae -->
+          <p>{{ post.publisher }}</p>
+        </div>
+        <div v-if="post.nama">
+          <p>{{ post.nama }}</p>
+        </div>
+        <div v-if="post.alamat">
+          <p>{{ post.alamat }}</p>
+        </div>
+        <div v-if="post.durasiTotal">
+          <p>{{ post.durasiTotal }} Minggu</p>
+        </div>
+        <div v-if="post.durasiMinggu">
+        <p>{{ post.durasiMinggu }} Pertemuan Per Minggu</p>
+        </div>
+        <div v-if="post.biayaDiskon">
+        <p>Rp {{ post.biayaDiskon }}</p>
+        </div>
+        <div v-else-if="post.biayaOri">
+          <p>Rp {{ post.biayaOri }}</p>
+        </div>
+        <div v-if="post.linkWeb">
         <a v-bind:href="post.linkWeb">{{ post.linkWeb }}</a>
+        </div>
+        <div v-if="post.linkDaftar">
         <a v-bind:href="post.linkDaftar">{{ post.linkDaftar }}</a>
+        </div>
       </template>
     </main>
   </template>
