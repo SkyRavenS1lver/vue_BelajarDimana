@@ -26,7 +26,7 @@ import { RouterLink } from 'vue-router'
             
                 <!-- search bar -->
                 <div class='flex items-center content-evenly'>
-                    <form action="#">
+                    <!-- <form action="#"> -->
                         <div class="grid place-items-center">
                             <!-- search bar meneh :v -->
                             <div class=" outline h-[45px] min-w-[200px] max-w-[300px] relative flex items-center md:min-w-[350px] xl:min-w-[400px] 
@@ -42,18 +42,26 @@ import { RouterLink } from 'vue-router'
                                 <!-- select kiri end -->
   
                                 <!-- input text -->
-                                <input type="text" class='ml-[1rem] outline-none bg-white w-[56.5%]' placeholder="Belajar Dimana">
-                                
+                                <!-- <input type="text" ref="inputSearch" class='ml-[1rem] outline-none bg-white w-[56.5%]' placeholder="Belajar Dimana"> -->
+                                <input
+      type="text"
+      placeholder="Belajar Dimana"
+      ref="inputField"
+      class='ml-[1rem] outline-none bg-white w-[56.5%]'
+      />
                                 <!-- logo search -->
-                                <div class="grid place-items-center h-full w-12 text-gray-300 ">
-                                    <img src="http://belajardimana.com/gambar/search.png" alt="">
+                                <div class="grid place-items-center h-full w-12 text-gray-300 ">  
+                                        <RouterLink @click="searchInput" :to="{ name: 'Search', params:{search:searched}}">
+                                            <img src="http://belajardimana.com/gambar/search.png" alt=""> 
+                                        </RouterLink>
+                                    
                                 </div>
   
   
                             </div>
                             <!-- search bar meneh :v end -->
                         </div>
-                    </form>
+                    <!-- </form> -->
                 </div>
                 <!-- search bar end -->
   
@@ -95,7 +103,16 @@ export default {
   data() {
     return {
       showModal: false,
+      searched:'',
     }
   },
-}
+  methods:{
+    searchInput() {
+      // Access ref with "$refs" property
+      console.log(this.$refs.inputField.value);
+      this.searched = this.$refs.inputField.value;
+    //   const message = this.$refs.inputField.value;
+    //   this.shout = `${message.toUpperCase()}!!!`;
+  },
+}}
 </script>

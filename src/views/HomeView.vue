@@ -1,6 +1,12 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import Cards from '../components/Cards.vue';
+const props = defineProps({
+  search: {
+    type: String,
+    required: false,
+  }
+})
 </script>
 
 
@@ -29,21 +35,28 @@ export default {
       posts: [],
       postsFC:[],
       OC:'OC',
-      FC: 'FC'
+      FC: 'FC',
     };
   },
 
   methods: {
     async getData() {
-      try {
+      // this.search = this.$route.params.search;
+      var link = "https://api.belajardimana.com";
+      if (this.search){
+        link = link+"?Search="+this.search;
+      }
+      console.log(link)
+        try {
         const headers = { "Content-Type": "application/json"};
-        fetch("https://api.belajardimana.com", { headers })
+        fetch(link, { headers })
         .then(response => response.json())
         .then(data => (this.posts = data));
       } catch (error) {
         console.log(error);
       }
-    },
+    }
+      
   },
 
   created() {

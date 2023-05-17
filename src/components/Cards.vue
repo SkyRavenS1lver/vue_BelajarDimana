@@ -40,6 +40,3 @@ else{
         </a>   
             
 </template>
-<script>
-
-</script>

@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import OCView from '../views/OCView.vue'
-
+import SearchView from '../views/SearchView.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -10,6 +10,12 @@ const router = createRouter({
       name: 'home',
       props: true,
       component: HomeView
+    },
+    {
+      path: '/:search',
+      name: 'Search',
+      props: true,
+      component: SearchView
     },
     {
       path: '/maps',
