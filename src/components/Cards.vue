@@ -25,7 +25,9 @@ else{
             <a href="#">
             <div class="max-w-sm rounded-xl overflow-hidden shadow-lg border-2">
                 <div class="text-center font-bold text-xl mb-1">{{ mode }}</div>
-                <img class="w-full" src="http://belajardimana.com/gambar/placeholder.png" 
+                <img v-if="msg.linkGambar" class="w-full" :src="msg.linkGambar" 
+                alt="Placeholder image">
+                <img v-else class="w-full" src="http://belajardimana.com/gambar/placeholder.png" 
                 alt="Placeholder image">
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-1">{{ msg.nama }}</div>
