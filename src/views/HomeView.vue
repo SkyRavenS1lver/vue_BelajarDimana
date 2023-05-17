@@ -14,6 +14,9 @@ const props = defineProps({
 <template>
   <main>
     <div class='flex-wrap flex mx-[9rem]'>
+      <template v-if="model.length == 0" >
+        <p>No Data to Show</p>
+      </template>
       <template v-for="post in model" v-bind:key="post.nama">
         <div class='m-[3rem]'>
         <RouterLink v-if="post.idOC" :to="{ name: 'Profile', params:{id:post.idOC, mode:OC}}">
