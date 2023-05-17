@@ -45,9 +45,8 @@ export default {
   },
   data() {
     return {
-      zoom: 2,
+      zoom: 15,
       posts:[],
-      // coordinates: [[50, 14],[53, 20], [53, 25]],
     };
   },
   methods: {
