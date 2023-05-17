@@ -15,8 +15,8 @@ function filteredList() {
     <NavBar :modelValue="searching" @update:modelValue="newValue=>searching=newValue" :value="searching"/>
   </header>
 
-  <RouterView v-if="searching==''" :model="posts" style="z-index: 0;"/>
-  <RouterView v-else :model="filteredPost" style="z-index: 0;"/>
+  <!-- <RouterView v-if="searching==''" :model="filteredPost" style="z-index: 0;"/> -->
+  <RouterView :model="filteredPost" style="z-index: 0;"/>
 </template>
 <script>
 import NavBar from './components/NavBar.vue';
@@ -59,6 +59,10 @@ export default {
       console.log(newQuestion);
       this.filteredPost =  this.posts.filter((post)=>
       post.nama.toLowerCase().includes(newQuestion.toLowerCase()));
+    },
+    posts: function(){
+      this.posts.sort((a,b) => (a.nama.toLowerCase() >b.nama.toLowerCase() ? 1:-1));
+      this.filteredPost = this.posts;
     }
   },
 };

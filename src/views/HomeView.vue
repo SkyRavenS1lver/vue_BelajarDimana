@@ -20,11 +20,11 @@ const props = defineProps({
       <template v-for="post in model" v-bind:key="post.nama">
         <div class='m-[3rem]'>
         <RouterLink v-if="post.idOC" :to="{ name: 'Profile', params:{id:post.idOC, mode:OC}}">
-          <Cards :msg="post" :mode="mode" :id="post.idOC"/>
+          <Cards :msg="post" :mode="'Online Course'" :id="post.idOC"/>
         </RouterLink>
         
         <RouterLink v-else-if="post.idFC" :to="{ name: 'Profile', params:{id:post.idFC, mode:FC}}">
-          <Cards :msg="post" :mode="mode" :id="post.idFC"/>{{ modelValue }}
+          <Cards :msg="post" :mode="'Offline Course'" :id="post.idFC"/>{{ modelValue }}
         </RouterLink>
         </div>
       </template> 

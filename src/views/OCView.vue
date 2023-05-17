@@ -10,13 +10,19 @@ const props = defineProps({
 
 <template>
     <main>
-      <template v-for="post in posts" v-bind:key="post.id">
+      <template v-for="post in posts" v-bind:key="post">
         <div v-if="post.publisher">
           <!-- Awakmu cuma perlu nambah nang njero div ae -->
           <p>{{ post.publisher }}</p>
         </div>
         <div v-if="post.nama">
           <p>{{ post.nama }}</p>
+        </div>
+        <div v-if="post.idOC">
+          <p>Online Course</p>
+        </div>
+        <div v-else-if="post.idFC">
+          <p>Offline Course</p>
         </div>
         <div v-if="post.alamat">
           <p>{{ post.alamat }}</p>
