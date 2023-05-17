@@ -53,11 +53,20 @@ import CustomInput from './CustomInput.vue';
                                   />
                                 <!-- logo search -->
                                 <div class="grid place-items-center h-full w-12 text-gray-300 ">  
-                                        <!-- <RouterLink @click="searchInput" :to="{ name: 'Search', params:{search:searched}}"> -->
+                                        <RouterLink to="/">
                                             <img src="http://belajardimana.com/gambar/search.png" alt=""> 
-                                        <!-- </RouterLink> -->
+                                        </RouterLink>
+                                        
                                     
                                 </div>
+                                <!-- Hard Reset to Home -->
+                                <a v-if="$route.fullPath == '/'" href="/">
+                                    <img src="http://belajardimana.com/gambar/close.png" style="width: 25px;" alt=""> 
+                                </a>
+                                <!-- Hard Reset to Maps -->
+                                <a v-if="$route.fullPath == '/maps'" href="/maps">
+                                    <img src="http://belajardimana.com/gambar/close.png" style="width: 25px;" alt=""> 
+                                </a>
   
   
                             </div>

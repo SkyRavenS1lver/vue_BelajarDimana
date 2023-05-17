@@ -15,7 +15,7 @@ function filteredList() {
     <NavBar :modelValue="searching" @update:modelValue="newValue=>searching=newValue" :value="searching"/>
   </header>
 
-  <RouterView v-if="filteredPost.length==0 && searching==''" :model="posts" style="z-index: 0;"/>
+  <RouterView v-if="searching==''" :model="posts" style="z-index: 0;"/>
   <RouterView v-else :model="filteredPost" style="z-index: 0;"/>
 </template>
 <script>
