@@ -12,10 +12,11 @@ import Cards from '../components/Cards.vue';
       ></l-tile-layer>
       <l-control-zoom position="topright" ></l-control-zoom>
       <!-- <l-marker :lat-lng="[47.7515953048815, 8.757179159967961]" /> -->
-      <template v-for="coordinate in coordinates" :key="coordinate">
-        <l-marker  :lat-lng="coordinate" >
+      <template v-for="post in posts" :key="post.idFC">
+        <l-marker  :lat-lng="[post.latitude, post.longitude]">
           <l-icon :icon-size= [40,40] icon-url="https://i.ibb.co/4sQs8L1/location.png"> </l-icon>
           <l-popup ref="popup">
+            {{ post.nama }}
            </l-popup>
         </l-marker>
           
@@ -45,8 +46,26 @@ export default {
   data() {
     return {
       zoom: 2,
-      coordinates: [[50, 14],[53, 20], [53, 25]],
+      posts:[],
+      // coordinates: [[50, 14],[53, 20], [53, 25]],
     };
+  },
+  methods: {
+    async getData() {
+      try {
+        const headers = { "Content-Type": "application/json"};
+        fetch("https://api.belajardimana.com?Mode=FC", { headers })
+        .then(response => response.json())
+        .then(data => (this.posts = data));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+
+  created() {
+    this.getData();
+    console.log(this.posts);
   },
 };
 </script>
