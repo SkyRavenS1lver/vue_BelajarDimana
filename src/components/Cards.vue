@@ -18,7 +18,6 @@ else{
 
 <template>
     
-        <div class='m-[3rem]'>
             <a href="#">
             <div class="max-w-sm rounded-xl overflow-hidden shadow-lg border-2">
                 <img class="w-full" src="http://belajardimana.com/gambar/placeholder.png" 
@@ -39,7 +38,6 @@ else{
                 </div>
             </div>
         </a>   
-        </div>
             
 </template>
 <script>
