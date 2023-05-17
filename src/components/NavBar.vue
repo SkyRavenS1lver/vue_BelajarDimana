@@ -1,5 +1,6 @@
-<script setup lang="ts">
+<script setup>
 import { RouterLink } from 'vue-router'
+import CustomInput from './CustomInput.vue';
 </script>
 <template>
     
@@ -43,17 +44,18 @@ import { RouterLink } from 'vue-router'
   
                                 <!-- input text -->
                                 <!-- <input type="text" ref="inputSearch" class='ml-[1rem] outline-none bg-white w-[56.5%]' placeholder="Belajar Dimana"> -->
-                                <input
-      type="text"
-      placeholder="Belajar Dimana"
-      ref="inputField"
-      class='ml-[1rem] outline-none bg-white w-[56.5%]'
-      />
+                                <CustomInput
+                                  type="text"
+                                  v-model="modelValue"
+                                  :value="modelValue"
+                                  @input="$emit('update:modelValue', $event.target.value)"
+                                  class='ml-[1rem] outline-none bg-white w-[56.5%]'
+                                  />
                                 <!-- logo search -->
                                 <div class="grid place-items-center h-full w-12 text-gray-300 ">  
-                                        <RouterLink @click="searchInput" :to="{ name: 'Search', params:{search:searched}}">
+                                        <!-- <RouterLink @click="searchInput" :to="{ name: 'Search', params:{search:searched}}"> -->
                                             <img src="http://belajardimana.com/gambar/search.png" alt=""> 
-                                        </RouterLink>
+                                        <!-- </RouterLink> -->
                                     
                                 </div>
   
@@ -95,24 +97,18 @@ import { RouterLink } from 'vue-router'
   
   </template>
 
-  <script lang="ts">
+  <script>
 import CustomModal from './CustomModal.vue'
 
 export default {
-  components: { CustomModal },
+  components: { CustomModal, CustomInput },
   data() {
     return {
+      props: ['modelValue'],
+      emits: ['update:modelValue'],
       showModal: false,
-      searched:'',
+      message: 'hello'
     }
   },
-  methods:{
-    searchInput() {
-      // Access ref with "$refs" property
-      console.log(this.$refs.inputField.value);
-      this.searched = this.$refs.inputField.value;
-    //   const message = this.$refs.inputField.value;
-    //   this.shout = `${message.toUpperCase()}!!!`;
-  },
-}}
+}
 </script>

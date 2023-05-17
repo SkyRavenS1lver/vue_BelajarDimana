@@ -1,16 +1,68 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import NavBar from './components/NavBar.vue';
+import { ref } from "vue";
+let input = ref("");
+function filteredList() {
+  return posts.filter((post) =>
+    post.nama.toLowerCase().includes(searching.value.toLowerCase())
+  );
+}
 </script>
 
 <template>
 
   <header>
-    <NavBar/>
+    <NavBar :modelValue="searching" @update:modelValue="newValue=>searching=newValue" :value="searching"/>
   </header>
 
-  <RouterView style="z-index: 0;" />
+  <RouterView v-if="filteredPost.length==0" :model="posts" style="z-index: 0;"/>
+  <RouterView v-else :model="filteredPost" style="z-index: 0;"/>
 </template>
+<script>
+import NavBar from './components/NavBar.vue';
+export default {
+  components: { NavBar },
+  data() {
+    return {
+      posts: [],
+      filteredPost: [],
+      searching:'',
+      Search:'',
+    };
+  },
+
+  methods: {
+    async getData() {
+      // this.search = this.$route.params.search;
+      var link = "https://api.belajardimana.com";
+        try {
+        const headers = { "Content-Type": "application/json"};
+        fetch(link, { headers })
+        .then(response => response.json())
+        .then(data => (this.posts = data));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    Search($searches){
+      return this.posts.filter((post)=>
+       post.nama.toLowerCase().includes($searches.toLowerCase()));
+    }      
+  },
+
+  created() {
+    this.getData();
+    console.log(this.posts);
+  },
+  watch: {
+    searching: function(newQuestion, oldQuestion){
+      console.log(newQuestion);
+      this.filteredPost =  this.posts.filter((post)=>
+      post.nama.toLowerCase().includes(newQuestion.toLowerCase()));
+    }
+  },
+};
+</script>
 
 <!-- <style scoped>
 header {

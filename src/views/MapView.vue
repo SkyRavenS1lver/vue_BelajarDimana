@@ -1,5 +1,11 @@
 <script setup>
 import Cards from '../components/Cards.vue';
+const props = defineProps({
+  model: {
+    type: Array,
+    required: false,
+  }
+})
 </script>
 
 <template>
@@ -12,8 +18,8 @@ import Cards from '../components/Cards.vue';
       ></l-tile-layer>
       <l-control-zoom position="topright" ></l-control-zoom>
       <!-- <l-marker :lat-lng="[47.7515953048815, 8.757179159967961]" /> -->
-      <template v-for="post in posts" :key="post.idFC">
-        <l-marker  :lat-lng="[post.latitude, post.longitude]">
+      <template v-for="post in model" :key="post.idFC">
+        <l-marker v-if="post.idFC"  :lat-lng="[post.latitude, post.longitude]">
           <l-icon :icon-size= [40,40] icon-url="http://belajardimana.com/gambar/location.png"> </l-icon>
           <l-popup ref="popup">
             {{ post.nama }}
@@ -45,27 +51,27 @@ export default {
   },
   data() {
     return {
-      zoom: 15,
-      posts:[],
+      zoom: 2,
+      // posts:[],
     };
   },
-  methods: {
-    async getData() {
-      try {
-        const headers = { "Content-Type": "application/json"};
-        fetch("https://api.belajardimana.com?Mode=FC", { headers })
-        .then(response => response.json())
-        .then(data => (this.posts = data));
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  },
+  // methods: {
+  //   async getData() {
+  //     try {
+  //       const headers = { "Content-Type": "application/json"};
+  //       fetch("https://api.belajardimana.com?Mode=FC", { headers })
+  //       .then(response => response.json())
+  //       .then(data => (this.posts = data));
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   },
+  // },
 
-  created() {
-    this.getData();
-    console.log(this.posts);
-  },
+  // created() {
+  //   this.getData();
+  //   console.log(this.posts);
+  // },
 };
 </script>
 
