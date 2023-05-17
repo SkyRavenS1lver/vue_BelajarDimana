@@ -48,7 +48,7 @@ import CustomInput from './CustomInput.vue';
                                   type="text"
                                   v-model="modelValue"
                                   :value="modelValue"
-                                  @change="$emit('update:modelValue', $event.target.value)"
+                                  @input="$emit('update:modelValue', $event.target.value)"
                                   class='ml-[1rem] outline-none bg-white w-[56.5%]'
                                   />
                                 <!-- logo search -->
