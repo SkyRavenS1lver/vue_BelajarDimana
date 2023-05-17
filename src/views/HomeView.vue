@@ -11,17 +11,10 @@ import Cards from '../components/Cards.vue';
         <RouterLink v-if="post.idOC" :to="{ name: 'Profile', params:{id:post.idOC, mode:OC}}">
           <Cards :msg="post"/>
         </RouterLink>
-        <RouterLink v-else :to="{ name: 'Profile', params:{id:post.idFC, mode:FC}}">
+        <RouterLink v-else-if="post.idFC" :to="{ name: 'Profile', params:{id:post.idFC, mode:FC}}">
           <Cards :msg="post"/>
         </RouterLink>
       </template> 
-
-      <!-- <template v-for="post in posts" v-bind:key="post.id">
-        <RouterLink :to="{ name: 'Profile', params:{id:post.id}}">
-          <Cards :msg="post"/>
-        </RouterLink>
-      </template>    -->
-
     </div>
   </main>
 </template>
