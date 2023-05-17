@@ -11,6 +11,10 @@ const props = defineProps({
 <template>
     <main>
       <template v-for="post in posts" v-bind:key="post">
+        <img v-if="post.linkGambar" class="w-full" :src="post.linkGambar" 
+                alt="Placeholder image">
+        <img v-else class="w-full" src="http://belajardimana.com/gambar/placeholder.png" 
+                alt="Placeholder image">
         <div v-if="post.publisher">
           <!-- Awakmu cuma perlu nambah nang njero div ae -->
           <p>{{ post.publisher }}</p>
