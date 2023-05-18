@@ -9,9 +9,10 @@ import CustomPagination from './components/CustomPagination.vue';
     <NavBar :modelValue="searching" @update:modelValue="newValue=>searching=newValue" :value="searching"/>
   </header>
 
-  <!-- <RouterView v-if="searching==''" :model="filteredPost" style="z-index: 0;"/> -->
-  <RouterView :model="shownPage" style="z-index: 0;"/>
-  <CustomPagination v-if="$route.fullPath == '/'"
+  <RouterView v-if="$route.fullPath == '/'" :model="shownPage" style="z-index: 0;"/>
+  <RouterView v-else :model="filteredPost" style="z-index: 0;"/>
+  
+  <CustomPagination v-if="$route.fullPath == '/' && filteredPost.length>0"
       :totalPages="total"
       :perPage="perPages"
       :currentPage="currentPage"
