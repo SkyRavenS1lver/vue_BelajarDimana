@@ -10,7 +10,7 @@ import CustomPagination from './components/CustomPagination.vue';
   </header>
 
   <RouterView v-if="$route.fullPath == '/'" :model="shownPage" style="z-index: 0;"/>
-  <RouterView v-else :model="filteredPost" style="z-index: 0;"/>
+  <RouterView v-else :model="offlinePage" style="z-index: 0;"/>
   
   <CustomPagination v-if="$route.fullPath == '/' && filteredPost.length>perPages"
       :totalPages="total"
@@ -32,6 +32,7 @@ export default {
       total:1,
       perPages:10,
       shownPage:[],
+      offlinePage:[],
     };
   },
 
@@ -71,7 +72,10 @@ export default {
       this.currentPage =  1;
       this.total = Math.ceil(this.filteredPost.length/this.perPages);
       this.shownPage = this.filteredPost.slice((this.perPages*(this.currentPage-1)), (this.perPages*this.currentPage));
-      console.log(this.total);
+      for (let i = 0; i < this.filteredPost.length; i++) {
+          if(this.filteredPost[i].idFC){this.offlinePage.push(this.filteredPost[i])};
+        }
+      console.log(this.offlinePage);
       // this.total = Math.ceil(this.filteredPost.length/this.perPage);
     },
     currentPage: function(){
