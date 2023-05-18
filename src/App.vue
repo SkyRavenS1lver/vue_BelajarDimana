@@ -1,12 +1,5 @@
 <script setup>
 import { RouterView } from 'vue-router'
-import { ref } from "vue";
-let input = ref("");
-function filteredList() {
-  return posts.filter((post) =>
-    post.nama.toLowerCase().includes(searching.value.toLowerCase())
-  );
-}
 </script>
 
 <template>
@@ -63,7 +56,7 @@ export default {
     posts: function(){
       this.posts.sort((a,b) => (a.nama.toLowerCase() >b.nama.toLowerCase() ? 1:-1));
       this.filteredPost = this.posts;
-    }
+    },
   },
 };
 </script>

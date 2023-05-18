@@ -16,7 +16,7 @@ const props = defineProps({
         <img src="http://belajardimana.com/gambar/loading.gif" alt="" style="width: 25vw;, height: 25vh;" >
       </center>
     </div>
-      <template v-for="post in posts" v-bind:key="post">
+      <template v-for="post in posts" v-bind:key="posts">
         <img v-if="post.linkGambar" class="w-full" :src="post.linkGambar" 
                 alt="Placeholder image">
         <img v-else class="w-full" src="http://belajardimana.com/gambar/placeholder.png" 

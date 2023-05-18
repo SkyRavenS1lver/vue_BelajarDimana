@@ -21,7 +21,7 @@ const props = defineProps({
       ></l-tile-layer>
       <l-control-zoom position="topright" ></l-control-zoom>
       <!-- <l-marker :lat-lng="[47.7515953048815, 8.757179159967961]" /> -->
-      <template v-for="post in model" :key="post">
+      <template v-for="post in model" :key="model">
       <!-- <button style="z-index: 500; color: black;">{{ post.nama }}</button> -->
         <l-marker v-if="post.idFC"  :lat-lng="[post.latitude, post.longitude]" @click="isOpened = true, data = post">
           <l-icon :icon-size= [40,40] icon-url="http://belajardimana.com/gambar/location.png" > </l-icon>

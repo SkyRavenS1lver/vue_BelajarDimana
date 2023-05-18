@@ -2,6 +2,8 @@
 import { RouterLink } from 'vue-router'
 import Cards from '../components/Cards.vue';
 import CustomInput from '../components/CustomInput.vue';
+import CustomPagination from '../components/CustomPagination.vue';
+
 const props = defineProps({
   model: {
     type: Array,
@@ -22,7 +24,7 @@ const props = defineProps({
       <template v-if="model.length == 0" >
         <p>No Data to Show</p>
       </template>
-      <template v-for="post in model" v-bind:key="post.nama">
+      <template v-for="post in model" v-bind:key="model">
         <div class='m-[3rem]'>
         <RouterLink v-if="post.idOC" :to="{ name: 'Profile', params:{id:post.idOC, mode:OC}}">
           <Cards :msg="post" :mode="'Online Course'" :id="post.idOC"/>
@@ -33,6 +35,12 @@ const props = defineProps({
         </RouterLink>
         </div>
       </template> 
+      <!-- <CustomPagination 
+      :total-pages="10"
+      :per-page="1"
+      :current-page="currentPage"
+      @pagechanged="onPageChange"
+      /> -->
     </div>
   </main>
 </template>
@@ -40,13 +48,23 @@ const props = defineProps({
 <script>
 export default {
   name:'home',
+  components:{
+    CustomPagination,
+  },
   data() {
     return {
       props: ['modelValue'],
       emits: ['update:modelValue'],
       OC:'OC',
       FC: 'FC',
+      currentPage: 1,
     };
+  },
+  methods:{
+    onPageChange(page) {
+      console.log(page)
+      this.currentPage = page;
+    }
   },
 
   // methods: {
