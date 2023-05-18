@@ -1,5 +1,6 @@
 <script setup>
 import { RouterView } from 'vue-router'
+import CustomPagination from './components/CustomPagination.vue';
 </script>
 
 <template>
@@ -9,24 +10,32 @@ import { RouterView } from 'vue-router'
   </header>
 
   <!-- <RouterView v-if="searching==''" :model="filteredPost" style="z-index: 0;"/> -->
-  <RouterView :model="filteredPost" style="z-index: 0;"/>
+  <RouterView :model="shownPage" style="z-index: 0;"/>
+  <CustomPagination v-if="$route.fullPath == '/'"
+      :totalPages="total"
+      :perPage="perPages"
+      :currentPage="currentPage"
+      @pagechanged="onPageChange"
+      />
 </template>
 <script>
 import NavBar from './components/NavBar.vue';
 export default {
-  components: { NavBar },
+  components: { NavBar, CustomPagination },
   data() {
     return {
       posts: [],
       filteredPost: [],
       searching:'',
-      Search:'',
+      currentPage:1,
+      total:1,
+      perPages:1,
+      shownPage:[],
     };
   },
 
   methods: {
     async getData() {
-      // this.search = this.$route.params.search;
       var link = "https://api.belajardimana.com";
         try {
         const headers = { "Content-Type": "application/json"};
@@ -37,10 +46,10 @@ export default {
         console.log(error);
       }
     },
-    Search($searches){
-      return this.posts.filter((post)=>
-       post.nama.toLowerCase().includes($searches.toLowerCase()));
-    }      
+    onPageChange(page) {
+      this.currentPage = page;
+      console.log(this.currentPage);
+    },
   },
 
   created() {
@@ -56,6 +65,17 @@ export default {
     posts: function(){
       this.posts.sort((a,b) => (a.nama.toLowerCase() >b.nama.toLowerCase() ? 1:-1));
       this.filteredPost = this.posts;
+    },
+    filteredPost: function(){
+      this.currentPage =  1;
+      this.total = Math.ceil(this.filteredPost.length/this.perPages);
+      this.shownPage = this.filteredPost.slice((this.perPages*(this.currentPage-1)), (this.perPages*this.currentPage));
+      console.log(this.total);
+      // this.total = Math.ceil(this.filteredPost.length/this.perPage);
+    },
+    currentPage: function(){
+      this.shownPage = this.filteredPost.slice((this.perPages*(this.currentPage-1)), (this.perPages*this.currentPage));
+      console.log(this.shownPage);
     },
   },
 };

@@ -2,12 +2,12 @@
 import { RouterLink } from 'vue-router'
 import Cards from '../components/Cards.vue';
 import CustomInput from '../components/CustomInput.vue';
-import CustomPagination from '../components/CustomPagination.vue';
 
 const props = defineProps({
   model: {
     type: Array,
     required: false,
+    default:[] 
   }
 })
 </script>
@@ -15,7 +15,7 @@ const props = defineProps({
 
 <template>
   <main>
-    <div v-if="posts == []">
+    <div v-if="model == []">
       <center>
       <img src="http://belajardimana.com/gambar/loading.gif" alt="" style="width: 25vw;, height: 25vh;" >
     </center>
@@ -35,12 +35,7 @@ const props = defineProps({
         </RouterLink>
         </div>
       </template> 
-      <!-- <CustomPagination 
-      :total-pages="10"
-      :per-page="1"
-      :current-page="currentPage"
-      @pagechanged="onPageChange"
-      /> -->
+      
     </div>
   </main>
 </template>
@@ -48,23 +43,15 @@ const props = defineProps({
 <script>
 export default {
   name:'home',
-  components:{
-    CustomPagination,
-  },
   data() {
     return {
       props: ['modelValue'],
       emits: ['update:modelValue'],
       OC:'OC',
       FC: 'FC',
-      currentPage: 1,
+      
+
     };
-  },
-  methods:{
-    onPageChange(page) {
-      console.log(page)
-      this.currentPage = page;
-    }
   },
 
   // methods: {
