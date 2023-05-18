@@ -12,7 +12,7 @@ import CustomPagination from './components/CustomPagination.vue';
   <RouterView v-if="$route.fullPath == '/'" :model="shownPage" style="z-index: 0;"/>
   <RouterView v-else :model="filteredPost" style="z-index: 0;"/>
   
-  <CustomPagination v-if="$route.fullPath == '/' && filteredPost.length>0"
+  <CustomPagination v-if="$route.fullPath == '/' && filteredPost.length>perPages"
       :totalPages="total"
       :perPage="perPages"
       :currentPage="currentPage"
@@ -30,7 +30,7 @@ export default {
       searching:'',
       currentPage:1,
       total:1,
-      perPages:1,
+      perPages:10,
       shownPage:[],
     };
   },

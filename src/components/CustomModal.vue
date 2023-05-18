@@ -10,7 +10,7 @@ import PercobaanSlider from './PercobaanSlider.vue';
       </div>
     </div>
     <div class="close" @click="$emit('close-modal')">
-      <img class="close-img" src="http://belajardimana.com/gambar/close.png" alt="" />
+      <img class="close-img" src="https://i.ibb.co/DpZCx6W/close.png" alt="" />
     </div>
   </div>
 </template>
@@ -36,14 +36,14 @@ import PercobaanSlider from './PercobaanSlider.vue';
 .modal {
   text-align: center;
   background-color: white;
-  height: 500px;
-  width: 500px;
-  margin-top: 10%;
-  padding: 60px 0;
+  height: 75vh;
+  width: 600px;
+  margin-top: 5%;
+  padding: 30px 0;
   border-radius: 20px;
 }
 .close {
-  margin: 10% 0 0 16px;
+  margin: 5% 0 0 16px;
   cursor: pointer;
 }
 
