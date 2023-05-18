@@ -1,5 +1,7 @@
 <script setup>
 import Cards from '../components/Cards.vue';
+import { VueSidePanel } from 'vue3-side-panel';
+import 'vue3-side-panel/dist/vue3-side-panel.css'
 const props = defineProps({
   model: {
     type: Array,
@@ -21,14 +23,31 @@ const props = defineProps({
       <!-- <l-marker :lat-lng="[47.7515953048815, 8.757179159967961]" /> -->
       <template v-for="post in model" :key="post">
       <!-- <button style="z-index: 500; color: black;">{{ post.nama }}</button> -->
-        <l-marker v-if="post.idFC"  :lat-lng="[post.latitude, post.longitude]">
-          <l-icon :icon-size= [40,40] icon-url="http://belajardimana.com/gambar/location.png"> </l-icon>
+        <l-marker v-if="post.idFC"  :lat-lng="[post.latitude, post.longitude]" @click="isOpened = true, data = post">
+          <l-icon :icon-size= [40,40] icon-url="http://belajardimana.com/gambar/location.png" > </l-icon>
           <l-popup ref="popup">
             {{ post.nama }}
            </l-popup>
         </l-marker>
       </template>
     </l-map>
+
+    <VueSidePanel v-model="isOpened" side="left">
+      <!-- <Button @click="isOpened=false, data=null">Close</Button> -->
+      <div style="height: 100%;" class="text-black">
+        <div v-if="data">
+          <img v-if="data.linkGambar" class="w-full" :src="data.linkGambar" 
+                alt="Placeholder image">
+          <img v-else class="w-full" src="http://belajardimana.com/gambar/placeholder.png" 
+                alt="Placeholder image">
+          <h2 v-if="data.nama"> {{ data.nama }} </h2>
+          <h2 v-if="data.publisher"> {{ data.publisher }} </h2>
+          <h2 v-if="data.durasiMinggu"> {{ data.durasiMinggu }} </h2>
+          <h2 v-if="data.alamat"> {{ data.alamat }} </h2>
+          <h2 v-if="data.linkDaftar"> {{ data.linkDaftar }} </h2>
+        </div>
+      </div>    
+    </VueSidePanel>
   </div>
 </template>
 
@@ -43,12 +62,13 @@ export default {
     LMarker,
     LPopup,
     LControlZoom,
-    LIcon
-  },
+    LIcon,
+},
   data() {
     return {
       zoom: 2,
-      // posts:[],
+      data:null,
+      isOpened: false,
     };
   },
   // methods: {

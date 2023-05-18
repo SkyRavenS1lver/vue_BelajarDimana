@@ -29,7 +29,7 @@ const props = defineProps({
         </RouterLink>
         
         <RouterLink v-else-if="post.idFC" :to="{ name: 'Profile', params:{id:post.idFC, mode:FC}}">
-          <Cards :msg="post" :mode="'Offline Course'" :id="post.idFC"/>{{ modelValue }}
+          <Cards :msg="post" :mode="'Offline Course'" :id="post.idFC"/>
         </RouterLink>
         </div>
       </template> 
