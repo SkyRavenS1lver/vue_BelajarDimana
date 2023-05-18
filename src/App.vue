@@ -29,13 +29,15 @@ export default {
       posts: [],
       filteredPost: [],
       searching:'',
+      tempSearch:'',
       currentPage:1,
       total:1,
       perPages:10,
       shownPage:[],
       offlinePage:[],
       dataFiltered:[],
-
+      hasilFilter:[],
+      temporaryData:[],
     };
   },
 
@@ -62,32 +64,50 @@ export default {
     console.log(this.posts);
   },
   watch: {
-    searching: function(newQuestion, oldQuestion){
-      console.log(newQuestion);
-      this.filteredPost =  this.posts.filter((post)=>
-      post.nama.toLowerCase().includes(newQuestion.toLowerCase()));
+    searching: function(newQuestion){
+      this.tempSearch = newQuestion;
+      this.filteredPost = this.hasilFilter;
+      if(this.tempSearch!=""){
+      this.filteredPost =  this.hasilFilter.filter((post)=>
+      post.nama.toLowerCase().includes(this.tempSearch.toLowerCase()));}
+      this.temporaryData = this.filteredPost;
     },
     posts: function(){
       this.posts.sort((a,b) => (a.nama.toLowerCase() >b.nama.toLowerCase() ? 1:-1));
+      this.hasilFilter = this.posts;
       this.filteredPost = this.posts;
+      this.temporaryData = this.posts;
     },
-    filteredPost: function(){
+
+    temporaryData: function(){
       this.currentPage =  1;
-      this.total = Math.ceil(this.filteredPost.length/this.perPages);
-      this.shownPage = this.filteredPost.slice((this.perPages*(this.currentPage-1)), (this.perPages*this.currentPage));
-      for (let i = 0; i < this.filteredPost.length; i++) {
-          if(this.filteredPost[i].idFC){this.offlinePage.push(this.filteredPost[i])};
+      this.total = Math.ceil(this.temporaryData.length/this.perPages);
+      this.shownPage = this.temporaryData.slice((this.perPages*(this.currentPage-1)), (this.perPages*this.currentPage));
+      for (let i = 0; i < this.temporaryData.length; i++) {
+          if(this.temporaryData[i].idFC){this.offlinePage.push(this.temporaryData[i])};
         }
       console.log(this.offlinePage);
       // this.total = Math.ceil(this.filteredPost.length/this.perPage);
     },
     currentPage: function(){
-      this.shownPage = this.filteredPost.slice((this.perPages*(this.currentPage-1)), (this.perPages*this.currentPage));
+      this.shownPage = this.temporaryData.slice((this.perPages*(this.currentPage-1)), (this.perPages*this.currentPage));
       console.log(this.shownPage);
     },
-    dataFiltered: function(){
-      console.log(this.dataFiltered);
-    },
+    // dataFiltered: function(e){
+    //   this.hasilFilter = this.filteredPost;
+    //   if(e!=[]){
+    //     // var temp = [];
+    //     // for (let i = 0; i < this.hasilFilter.length; i++) {
+    //     //   if(this.temporaryData[i].idFC)
+    //     //   {this.hasilFilter.push(this.temporaryData[i])};
+    //     // }
+    //     this.hasilFilter =  this.filteredPost.filter((post)=>
+    //   (post.durasiMinggu == this.dataFiltered[3]) && (post.durasiMinggu == this.dataFiltered[3])
+    //   );
+    //   }
+    //   this.temporaryData = this.hasilFilter;
+      
+    // },
   },
 };
 </script>
