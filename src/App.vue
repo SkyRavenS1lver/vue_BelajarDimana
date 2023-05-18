@@ -6,7 +6,8 @@ import CustomPagination from './components/CustomPagination.vue';
 <template>
 
   <header>
-    <NavBar :modelValue="searching" @update:modelValue="newValue=>searching=newValue" :value="searching"/>
+    <NavBar :modelValue="searching" @update:modelValue="newValue=>searching=newValue" :value="searching" @updating:submissions="newValue=>dataFiltered = newValue"/>
+      {{ dataFiltered }}
   </header>
 
   <RouterView v-if="$route.fullPath == '/'" :model="shownPage" style="z-index: 0;"/>
@@ -33,6 +34,8 @@ export default {
       perPages:10,
       shownPage:[],
       offlinePage:[],
+      dataFiltered:[],
+
     };
   },
 
@@ -81,6 +84,9 @@ export default {
     currentPage: function(){
       this.shownPage = this.filteredPost.slice((this.perPages*(this.currentPage-1)), (this.perPages*this.currentPage));
       console.log(this.shownPage);
+    },
+    dataFiltered: function(){
+      console.log(this.dataFiltered);
     },
   },
 };

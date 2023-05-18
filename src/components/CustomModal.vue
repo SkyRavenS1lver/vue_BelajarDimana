@@ -6,7 +6,7 @@ import PercobaanSlider from './PercobaanSlider.vue';
     <div class="modal" @click.stop>
       <div class="text-black">
 
-        <PercobaanSlider/>
+        <PercobaanSlider @update:submissions="submits"/>
       </div>
     </div>
     <div class="close" @click="$emit('close-modal')">
@@ -17,6 +17,11 @@ import PercobaanSlider from './PercobaanSlider.vue';
 
 <script>
   export default {
+    methods: {
+      submits(submissions){
+        this.$emit('submits', submissions);
+      }
+    },
 }
 </script>
 
