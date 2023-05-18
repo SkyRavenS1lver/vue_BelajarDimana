@@ -205,17 +205,23 @@ methods: {
   resets(){
     this.minValue = 50000;
     this.maxValue= 100000000;
+    this.activeList[this.clicked] = false;
+    this.activeList2[this.clicked2] = false;
+    this.clicked= 0;
+    this.clicked2 = 0;
+    this.activeList[this.clicked] = true;
+    this.activeList2[this.clicked2] = true;
   },
   submits(){
     const submissions = [this.minValue, this.maxValue,this.clicked2, this.clicked];
-    if (submissions!=this.dataRef){
+    // if (submissions!=this.dataRef){
       this.$emit('update:submissions', submissions);
-    console.log(submissions);
-    }
-    else{
-      this.$emit('update:submissions', []);
-    console.log(submissions);
-    }    
+    this.$emit('close');
+    // }
+    // else{
+    //   this.$emit('update:submissions', []);
+    // console.log(submissions);
+    // }    
   },
   
   

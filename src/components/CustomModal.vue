@@ -6,7 +6,7 @@ import PercobaanSlider from './PercobaanSlider.vue';
     <div class="modal" @click.stop>
       <div class="text-black">
 
-        <PercobaanSlider @update:submissions="submits"/>
+        <PercobaanSlider @update:submissions="submits" @close="$emit('close-modal')"/>
       </div>
     </div>
     <div class="close" @click="$emit('close-modal')">

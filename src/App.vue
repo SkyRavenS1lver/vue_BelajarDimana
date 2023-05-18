@@ -7,7 +7,6 @@ import CustomPagination from './components/CustomPagination.vue';
 
   <header>
     <NavBar :modelValue="searching" @update:modelValue="newValue=>searching=newValue" :value="searching" @updating:submissions="newValue=>dataFiltered = newValue"/>
-      {{ dataFiltered }}
   </header>
 
   <RouterView v-if="$route.fullPath == '/'" :model="shownPage" style="z-index: 0;"/>
@@ -93,21 +92,35 @@ export default {
       this.shownPage = this.temporaryData.slice((this.perPages*(this.currentPage-1)), (this.perPages*this.currentPage));
       console.log(this.shownPage);
     },
-    // dataFiltered: function(e){
-    //   this.hasilFilter = this.filteredPost;
-    //   if(e!=[]){
-    //     // var temp = [];
-    //     // for (let i = 0; i < this.hasilFilter.length; i++) {
-    //     //   if(this.temporaryData[i].idFC)
-    //     //   {this.hasilFilter.push(this.temporaryData[i])};
-    //     // }
-    //     this.hasilFilter =  this.filteredPost.filter((post)=>
-    //   (post.durasiMinggu == this.dataFiltered[3]) && (post.durasiMinggu == this.dataFiltered[3])
-    //   );
-    //   }
-    //   this.temporaryData = this.hasilFilter;
-      
-    // },
+    dataFiltered: function(e){
+      this.hasilFilter = this.filteredPost;
+      if(e!=[]){
+        this.hasilFilter = [];
+        for (let i = 0; i < this.filteredPost.length; i++) {
+          
+          if((this.dataFiltered[2]==1 && this.filteredPost[i].idFC!=null) || (this.dataFiltered[2]==2 && this.filteredPost[i].idOC!=null)){
+            console.log(this.filteredPost[i].nama+"'1'");
+          }
+          else if(this.dataFiltered[3]!=0 && this.dataFiltered[3]!=this.filteredPost[i].durasiMinggu){
+            console.log(this.filteredPost[i].nama+"'2'");
+            console.log(this.dataFiltered[2]!=0);
+          }
+          else if(this.dataFiltered[0] > this.filteredPost[i].biayaOri || this.dataFiltered[1] < this.filteredPost[i].biayaOri){
+            console.log(this.filteredPost[i].nama+"'3'");
+          }
+          else{this.hasilFilter.push(this.filteredPost[i])
+            console.log(this.filteredPost[i].nama+"'4'");
+          };
+        }
+      //   this.hasilFilter =  this.filteredPost.filter((post)=>
+      // (post.durasiMinggu == this.dataFiltered[3]) && (post.durasiMinggu == this.dataFiltered[3])
+      // );
+      }
+      // console.log(this.temporaryData);
+      console.log(this.hasilFilter);
+      console.log("------------------------");
+      this.temporaryData = this.hasilFilter;
+    },
   },
 };
 </script>
