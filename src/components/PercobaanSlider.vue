@@ -63,33 +63,47 @@
         </div>
       </div>
 
-<!-- 
-      <div class=" mx-[5%]">
-        <p class="mb-[1rem] mt-[2rem] text-left ">Peringkat</p>
+      <div v-if="dataProv.length>0" class=" mx-[5%]">
+        <p class="mb-[1rem] mt-[2rem] text-left ">Provinsi</p>
         <div class="flex shadow-sm " role="group">
-          <button type="button" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
+          <button type="button" :class="{active:activeList3[0]}" @click="Active3(0)" class="btns mr-[1rem] rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 ">
             Semua
           </button>
-          <button type="button" class="rounded-lg mx-[1rem] px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
-            5.0
-          </button>
-          <button type="button" @click="actived1=false, Activate" class="rounded-lg mr-[1rem] px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
-            4.5
-          </button>
-          <button type="button" @click="actived1=false, Activate" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
-            4.0
-          </button>
-          <button type="button" @click="actived1=false, Activate" class="rounded-lg mx-[1rem] px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
-            3.5
-          </button>
-          <button type="button" @click="actived1=false, Activate" class="rounded-lg mr-[1rem] px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
-            3.0
-          </button>
-          <button type="button" @click="actived1=false, Activate" class="rounded-lg mr-[5%] px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 hover:bg-gray-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:bg-gray-700">
-            2.5
-          </button>
+          <template v-for="(prov, index) in dataProv" :key="dataProv">
+            <button type="button" :class="{active:activeList3[index+1]}" @click="Active3(index+1)" class="btns mr-[1rem] rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 ">
+              {{ prov.provinsi }}
+            </button>
+          </template>
         </div>
-      </div> -->
+      </div>
+
+      <div v-if="dataKab.length>0" class=" mx-[5%]">
+        <p class="mb-[1rem] mt-[2rem] text-left ">Kabupaten</p>
+        <div class="flex shadow-sm " role="group">
+          <button type="button" :class="{active:activeList4[0]}" @click="Active4(0)" class="btns mr-[1rem] rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 ">
+            Semua
+          </button>
+          <template v-for="(kab, index) in dataKab" :key="dataKab">
+            <button type="button" :class="{active:activeList4[index+1]}" @click="Active4(index+1)" class="btns mr-[1rem] rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 ">
+              {{ kab.kabupaten }}
+            </button>
+          </template>
+        </div>
+      </div>
+
+      <div v-if="dataKec.length>0" class=" mx-[5%]">
+        <p class="mb-[1rem] mt-[2rem] text-left ">Kecamatan</p>
+        <div class="flex shadow-sm " role="group">
+          <button type="button" :class="{active:activeList5[0]}" @click="Active5(0)" class="btns mr-[1rem] rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 ">
+            Semua
+          </button>
+          <template v-for="(kec, index) in dataKec" :key="dataKec">
+            <button type="button" :class="{active:activeList5[index+1]}" @click="Active5(index+1)" class="btns mr-[1rem] rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 ">
+              {{ kec.kecamatan }}
+            </button>
+          </template>
+        </div>
+      </div>
 
       <div class="flex items-center justify-between flex-wrap mt-[2rem] mx-[5%] ">
         <a @click="resets" class="underline hover:font-bold">Bersihkan Semua</a>
@@ -184,11 +198,22 @@ data() {
   return {
     activeList:[true,false,false,false,false,false,false],
     activeList2:[true,false,false],
+    activeList3:[true],
+    activeList4:[true],
+    activeList5:[true],
     clicked:0,
     clicked2:0,
+    clicked3:0,
+    clicked4:0,
+    clicked5:0,
     minValue:50000,
     maxValue:100000000,
-    dataRef:[50000,100000000,0,0],
+    prov:0,
+    dataProv:[],
+    kab:0,
+    dataKab:[],
+    kec:0,
+    dataKec:[],
   }
 },
 methods: {
@@ -202,15 +227,49 @@ methods: {
     this.activeList2[e] = true;
     this.clicked2 = e;
   },
+  Active3(e){
+    this.activeList3[this.clicked3] = false;
+    this.activeList3[e] = true;
+    this.clicked3 = e;
+    if(e>=1){
+      this.getKab(e);
+      console.log(this.dataKab);
+    }
+    else{this.dataKab = [];}
+  },
+  Active4(e){
+    this.activeList4[this.clicked4] = false;
+    this.activeList4[e] = true;
+    this.clicked4 = e;
+    if(e>=1){
+      this.getKec(e);
+      console.log(this.dataKab);
+    }
+    else{this.dataKec = [];}
+  },
+  Active5(e){
+    this.activeList5[this.clicked5] = false;
+    this.activeList5[e] = true;
+    this.clicked5 = e;
+  },
   resets(){
     this.minValue = 50000;
     this.maxValue= 100000000;
     this.activeList[this.clicked] = false;
     this.activeList2[this.clicked2] = false;
+    this.activeList3[this.clicked3] = false;
+    this.activeList4[this.clicked4] = false;
+    this.activeList5[this.clicked5] = false;
     this.clicked= 0;
     this.clicked2 = 0;
+    this.clicked3 = 0;
+    this.clicked4 = 0;
+    this.clicked5 = 0;
     this.activeList[this.clicked] = true;
     this.activeList2[this.clicked2] = true;
+    this.activeList3[this.clicked3] = true;
+    this.activeList4[this.clicked4] = true;
+    this.activeList5[this.clicked5] = true;
   },
   submits(){
     const submissions = [this.minValue, this.maxValue,this.clicked2, this.clicked];
@@ -223,9 +282,60 @@ methods: {
     // console.log(submissions);
     // }    
   },
+  async getData() {
+      var link = "https://api.belajardimana.com?Getting=true";
+        try {
+        const headers = { "Content-Type": "application/json"};
+        fetch(link, { headers })
+        .then(response => response.json())
+        .then(data => (this.dataProv = data));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  async getKab(e) {
+      var link = "https://api.belajardimana.com?Prov="+e;
+        try {
+        const headers = { "Content-Type": "application/json"};
+        fetch(link, { headers })
+        .then(response => response.json())
+        .then(data => (this.dataKab = data));
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getKec(e) {
+      var link = "https://api.belajardimana.com?Kab="+e;
+        try {
+        const headers = { "Content-Type": "application/json"};
+        fetch(link, { headers })
+        .then(response => response.json())
+        .then(data => (this.dataKec = data));
+      } catch (error) {
+        console.log(error);
+      }
+    },
   
-  
-  
+},
+watch:{
+  dataProv: function(){
+    this.activeList3 = [true];
+    for (let i = 0; i < this.dataProv.length; i++) {
+      this.activeList3.push(false);
+    }
+    },
+    dataKab: function(){
+    this.activeList4 = [true];
+    for (let i = 0; i < this.dataKab.length; i++) {
+      this.activeList4.push(false);
+    }
+    },
+    dataKec: function(){
+    this.activeList5 = [true];
+    for (let i = 0; i < this.dataKec.length; i++) {
+      this.activeList5.push(false);
+    }
+    },
 },
 mounted() {
   const fromSlider = document.querySelector('#fromSlider');
@@ -240,6 +350,10 @@ toSlider.oninput = () => controlToSlider(fromSlider, toSlider, toInput);
 fromInput.oninput = () => controlFromInput(fromSlider, fromInput, toInput, toSlider);
 toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
 
+},
+created() {
+  this.getData();
+  console.log(this.dataProv);
 },
 }
   
