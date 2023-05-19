@@ -80,6 +80,7 @@ export default {
 
     temporaryData: function(){
       this.currentPage =  1;
+      this.offlinePage = [];
       this.total = Math.ceil(this.temporaryData.length/this.perPages);
       this.shownPage = this.temporaryData.slice((this.perPages*(this.currentPage-1)), (this.perPages*this.currentPage));
       for (let i = 0; i < this.temporaryData.length; i++) {
