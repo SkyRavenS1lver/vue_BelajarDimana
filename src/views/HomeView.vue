@@ -20,7 +20,8 @@ const props = defineProps({
       <img src="http://belajardimana.com/gambar/loading.gif" alt="" style="width: 25vw;, height: 25vh;" >
     </center>
   </div>
-    <div class='flex-wrap flex mx-[9rem]'>
+    <div class='flex-wrap flex justify-center '> <!-- justify center -->
+      
       <template v-if="model.length == 0" >
         <p>No Data to Show</p>
       </template>

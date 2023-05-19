@@ -11,23 +11,18 @@ const props = defineProps({
 })
 var a= "";
 var b= "";
-if(props.msg.biayaDiskon){
-    a = props.msg.biayaDiskon;
-    b = props.msg.biayaOri;
-}
-else{
-    a = props.msg.biayaOri;
-}
+
+
 </script>
 
 <template>
     
             <a href="#">
-            <div class="max-w-sm rounded-xl overflow-hidden shadow-lg border-2">
+            <div class="max-w-sm rounded-xl overflow-hidden shadow-lg border-2 h-[500px]"> <!-- fixing size card box -->
                 <div class="text-center font-bold text-xl mb-1">{{ mode }}</div>
-                <img v-if="msg.linkGambar" class="w-full" :src="msg.linkGambar" 
-                alt="Placeholder image">
-                <img v-else class="w-full" src="http://belajardimana.com/gambar/placeholder.png" 
+                <img v-if="msg.linkGambar" class="w-full h-[250px]" :src="msg.linkGambar"  
+                alt="Placeholder image"> <!-- fixing image size -->
+                <img v-else class="w-full h-[250px]" src="http://belajardimana.com/gambar/placeholder.png" 
                 alt="Placeholder image">
                 <div class="px-6 py-4">
                     <div class="font-bold text-xl mb-1">{{ msg.nama }}</div>
@@ -37,11 +32,12 @@ else{
                     <p v-if="msg.alamat" class="text-gray-700 text-sm">
                         {{ msg.alamat }}
                     </p>
-                    <sub class="text-gray-700 text-l mt-[1rem]">
-                        <s id="Harga2">{{ b }}</s>
+                    <sub v-if="msg.biayaDiskon && msg.biayaOri" class="text-gray-700 text-l mt-[1rem]">
+                        <s id="Harga2">{{ msg.biayaDiskon }}</s>
                     </sub>
-                    <p id="Harga1" class="text-gray-700 text-m ">
-                        {{ a }}</p>
+                     <p v-else> {{ msg.biayaDiskon }}</p>
+                    <p v-if="msg.biayaOri" id="Harga1" class="text-gray-700 text-m ">
+                        {{ msg.biayaOri }}</p>
                 </div>
             </div>
         </a>   
