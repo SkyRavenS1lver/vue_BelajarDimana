@@ -100,7 +100,7 @@ import CustomInput from './CustomInput.vue';
         <!-- navbar end -->
     </div>
     <!-- div isi garis horizontal bawah + element sticky end -->
-    <CustomModal style="z-index: 500;" v-show="showModal" @close-modal="showModal = false" @submits="newValue=>this.$emit('updating:submissions', newValue)"/>
+    <CustomModal style="z-index: 500;" v-show="showModal" @close-modal="showModal = false" @submits="Submitss"/>
     
 
   
@@ -117,6 +117,11 @@ export default {
       emits: ['update:modelValue'],
       showModal: false,
       message: 'hello'
+    }
+  },
+  methods: {
+    Submitss(e){
+        this.$emit('updating:submissions', e);
     }
   },
 }
