@@ -37,8 +37,10 @@ import PercobaanSlider from './PercobaanSlider.vue';
   justify-content: center;
   background-color: #000000da;
 }
-
+.modal::-webkit-scrollbar {display:none;}
 .modal {
+  overflow-y:auto;
+  
   text-align: center;
   background-color: white;
   height: 75vh;

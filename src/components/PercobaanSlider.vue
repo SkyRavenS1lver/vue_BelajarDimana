@@ -269,6 +269,8 @@ methods: {
     this.activeList3[this.clicked3] = true;
     this.activeList4[this.clicked4] = true;
     this.activeList5[this.clicked5] = true;
+    this.dataKab = [];
+    this.dataKec = [];
   },
   submits(){
     const submissions = [this.minValue, this.maxValue,this.clicked2, this.clicked, this.clicked3, this.clicked4, this.clicked5];
