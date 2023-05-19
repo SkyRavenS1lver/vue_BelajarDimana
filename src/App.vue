@@ -64,11 +64,11 @@ export default {
     searching: function(newQuestion){
       this.tempSearch = newQuestion;
       this.filteredPost = this.hasilFilter;
-      if(this.tempSearch!=""){
-      this.filteredPost =  this.hasilFilter.filter((post)=>
+
+      this.filteredPost =  this.posts.filter((post)=>
       (post.nama.toLowerCase().includes(this.tempSearch.toLowerCase())) ||
-      (post.publisher.toLowerCase().includes(this.tempSearch.toLowerCase())) );}
-      this.temporaryData = this.filteredPost;
+      (post.publisher.toLowerCase().includes(this.tempSearch.toLowerCase())) );
+
     },
     posts: function(){
       this.posts.sort((a,b) => (a.nama.toLowerCase() >b.nama.toLowerCase() ? 1:-1));
@@ -76,6 +76,18 @@ export default {
       this.filteredPost = this.posts;
       this.temporaryData = this.posts;
 
+    },
+    filteredPost: function(){
+      this.temporaryData = [];
+      for (let i = 0; i < this.filteredPost.length; i++) {
+          if(this.hasilFilter.includes(this.filteredPost[i])){this.temporaryData.push(this.filteredPost[i])};
+        }
+    },
+    hasilFilter: function(){
+      this.temporaryData = [];
+      for (let i = 0; i < this.filteredPost.length; i++) {
+          if(this.hasilFilter.includes(this.filteredPost[i])){this.temporaryData.push(this.filteredPost[i])};
+        }
     },
 
     temporaryData: function(){
@@ -92,14 +104,13 @@ export default {
     },
     dataFiltered: function(e){
       this.hasilFilter = this.filteredPost;
-      if(e!=[]){
         var harga = 500000;
         this.hasilFilter = [];
-        for (let i = 0; i < this.filteredPost.length; i++) {
-          if(this.filteredPost[i].biayaOri!=null){harga = this.filteredPost[i].biayaOri}
-          if((this.dataFiltered[2]==1 && this.filteredPost[i].idFC!=null) || (this.dataFiltered[2]==2 && this.filteredPost[i].idOC!=null)){
+        for (let i = 0; i < this.posts.length; i++) {
+          if(this.posts[i].biayaOri!=null){harga = this.posts[i].biayaOri}
+          if((this.dataFiltered[2]==1 && this.posts[i].idFC!=null) || (this.dataFiltered[2]==2 && this.posts[i].idOC!=null)){
           }
-          else if(this.dataFiltered[3]!=0 && this.dataFiltered[3]!=this.filteredPost[i].durasiMinggu){
+          else if(this.dataFiltered[3]!=0 && this.dataFiltered[3]!=this.posts[i].durasiMinggu){
 
           }
           else if(this.dataFiltered[0] > harga || this.dataFiltered[1] < harga){
@@ -107,29 +118,31 @@ export default {
           }
           else{
             if(this.dataFiltered[4] == 0){
-            this.hasilFilter.push(this.filteredPost[i])
-            console.log(this.filteredPost[i].nama+" 4 ")
+            this.hasilFilter.push(this.posts[i])
+            console.log(this.posts[i].nama+" 4 ")
           }
-            else if(this.dataFiltered[4] != this.filteredPost[i].idProvinsi || this.filteredPost[i].idProvinsi==null){
-              console.log(this.filteredPost[i].nama+" 5 "+this.filteredPost[i].idProvinsi)
+            else if(this.dataFiltered[4] != this.posts[i].idProvinsi || this.posts[i].idProvinsi==null){
+              console.log(this.posts[i].nama+" 5 "+this.posts[i].idProvinsi)
               console.log(this.dataFiltered[4]+"=====")
             }
               
             else{
                 if(this.dataFiltered[5] == 0){
-                this.hasilFilter.push(this.filteredPost[i])
-                console.log(this.filteredPost[i].nama+" 6 ")
+                this.hasilFilter.push(this.posts[i])
+                console.log(this.posts[i].nama+" 6 ")
               }
-                else if(this.dataFiltered[5] != this.filteredPost[i].idKabupaten){}
+                else if(this.dataFiltered[5] != this.posts[i].idKabupaten){}
                 else{
-                  if(this.dataFiltered[6] == 0 || this.dataFiltered[6] == this.filteredPost[i].idKecamatan)
-                  {this.hasilFilter.push(this.filteredPost[i])}
+                  if(this.dataFiltered[6] == 0 || this.dataFiltered[6] == this.posts[i].idKecamatan)
+                  {this.hasilFilter.push(this.posts[i])}
                 }
             }
           };
         }
-      }
-      this.temporaryData = this.hasilFilter;
+ 
+
+      console.log("CUUUUUUK"+this.hasilFilter)
+      // this.temporaryData = this.hasilFilter;
     },
   },
 };

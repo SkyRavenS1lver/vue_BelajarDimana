@@ -274,14 +274,9 @@ methods: {
   },
   submits(){
     const submissions = [this.minValue, this.maxValue,this.clicked2, this.clicked, this.clicked3, this.clicked4, this.clicked5];
-    // if (submissions!=this.dataRef){
-      this.$emit('update:submissions', submissions);
+    console.log("Jancukkk"+submissions);
+    this.$emit('update:submissions', submissions);
     this.$emit('close');
-    // }
-    // else{
-    //   this.$emit('update:submissions', []);
-    // console.log(submissions);
-    // }    
   },
   async getData() {
       var link = "https://api.belajardimana.com?Getting=true";
