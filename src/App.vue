@@ -11,13 +11,15 @@ import CustomPagination from './components/CustomPagination.vue';
 
   <RouterView v-if="$route.fullPath == '/'" :model="shownPage" style="z-index: 0;"/>
   <RouterView v-else :model="offlinePage" style="z-index: 0;"/>
-  
-  <CustomPagination v-if="$route.fullPath == '/' && filteredPost.length>perPages"
+  <center>
+  <CustomPagination v-if="$route.fullPath == '/' && temporaryData.length>perPages"
       :totalPages="total"
       :perPage="perPages"
       :currentPage="currentPage"
       @pagechanged="onPageChange"
+      class="mb-20"
       />
+    </center>
 </template>
 <script>
 import NavBar from './components/NavBar.vue';
@@ -32,7 +34,7 @@ export default {
       tempSearch:'',
       currentPage:1,
       total:1,
-      perPages:10,
+      perPages:8,
       shownPage:[],
       offlinePage:[],
       dataFiltered:[],
