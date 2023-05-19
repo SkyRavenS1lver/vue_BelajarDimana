@@ -54,13 +54,11 @@ export default {
     },
     onPageChange(page) {
       this.currentPage = page;
-      console.log(this.currentPage);
     },
   },
 
   created() {
     this.getData();
-    console.log(this.posts);
   },
   watch: {
     searching: function(newQuestion){
@@ -68,7 +66,8 @@ export default {
       this.filteredPost = this.hasilFilter;
       if(this.tempSearch!=""){
       this.filteredPost =  this.hasilFilter.filter((post)=>
-      post.nama.toLowerCase().includes(this.tempSearch.toLowerCase()));}
+      (post.nama.toLowerCase().includes(this.tempSearch.toLowerCase())) ||
+      (post.publisher.toLowerCase().includes(this.tempSearch.toLowerCase())) );}
       this.temporaryData = this.filteredPost;
     },
     posts: function(){
@@ -76,6 +75,7 @@ export default {
       this.hasilFilter = this.posts;
       this.filteredPost = this.posts;
       this.temporaryData = this.posts;
+
     },
 
     temporaryData: function(){
@@ -86,40 +86,49 @@ export default {
       for (let i = 0; i < this.temporaryData.length; i++) {
           if(this.temporaryData[i].idFC){this.offlinePage.push(this.temporaryData[i])};
         }
-      console.log(this.offlinePage);
-      // this.total = Math.ceil(this.filteredPost.length/this.perPage);
     },
     currentPage: function(){
       this.shownPage = this.temporaryData.slice((this.perPages*(this.currentPage-1)), (this.perPages*this.currentPage));
-      console.log(this.shownPage);
     },
     dataFiltered: function(e){
       this.hasilFilter = this.filteredPost;
       if(e!=[]){
+        var harga = 500000;
         this.hasilFilter = [];
         for (let i = 0; i < this.filteredPost.length; i++) {
-          
+          if(this.filteredPost[i].biayaOri!=null){harga = this.filteredPost[i].biayaOri}
           if((this.dataFiltered[2]==1 && this.filteredPost[i].idFC!=null) || (this.dataFiltered[2]==2 && this.filteredPost[i].idOC!=null)){
-            console.log(this.filteredPost[i].nama+"'1'");
           }
           else if(this.dataFiltered[3]!=0 && this.dataFiltered[3]!=this.filteredPost[i].durasiMinggu){
-            console.log(this.filteredPost[i].nama+"'2'");
-            console.log(this.dataFiltered[2]!=0);
+
           }
-          else if(this.dataFiltered[0] > this.filteredPost[i].biayaOri || this.dataFiltered[1] < this.filteredPost[i].biayaOri){
-            console.log(this.filteredPost[i].nama+"'3'");
+          else if(this.dataFiltered[0] > harga || this.dataFiltered[1] < harga){
+
           }
-          else{this.hasilFilter.push(this.filteredPost[i])
-            console.log(this.filteredPost[i].nama+"'4'");
+          else{
+            if(this.dataFiltered[4] == 0){
+            this.hasilFilter.push(this.filteredPost[i])
+            console.log(this.filteredPost[i].nama+" 4 ")
+          }
+            else if(this.dataFiltered[4] != this.filteredPost[i].idProvinsi || this.filteredPost[i].idProvinsi==null){
+              console.log(this.filteredPost[i].nama+" 5 "+this.filteredPost[i].idProvinsi)
+              console.log(this.dataFiltered[4]+"=====")
+            }
+              
+            else{
+                if(this.dataFiltered[5] == 0){
+                this.hasilFilter.push(this.filteredPost[i])
+                console.log(this.filteredPost[i].nama+" 6 ")
+              }
+                else if(this.dataFiltered[5] != this.filteredPost[i].idKabupaten){}
+                else{
+                  if(this.dataFiltered[6] == 0 || this.dataFiltered[6] == this.filteredPost[i].idKecamatan)
+                  {this.hasilFilter.push(this.filteredPost[i])}
+                }
+            }
           };
         }
-      //   this.hasilFilter =  this.filteredPost.filter((post)=>
-      // (post.durasiMinggu == this.dataFiltered[3]) && (post.durasiMinggu == this.dataFiltered[3])
-      // );
       }
-      // console.log(this.temporaryData);
-      console.log(this.hasilFilter);
-      console.log("------------------------");
       this.temporaryData = this.hasilFilter;
     },
   },

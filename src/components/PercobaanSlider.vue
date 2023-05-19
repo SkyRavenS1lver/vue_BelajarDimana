@@ -235,7 +235,8 @@ methods: {
       this.getKab(e);
       console.log(this.dataKab);
     }
-    else{this.dataKab = [];}
+    else{this.dataKab = [];
+      this.dataKec = [];}
   },
   Active4(e){
     this.activeList4[this.clicked4] = false;
@@ -272,7 +273,7 @@ methods: {
     this.activeList5[this.clicked5] = true;
   },
   submits(){
-    const submissions = [this.minValue, this.maxValue,this.clicked2, this.clicked];
+    const submissions = [this.minValue, this.maxValue,this.clicked2, this.clicked, this.clicked3, this.clicked4, this.clicked5];
     // if (submissions!=this.dataRef){
       this.$emit('update:submissions', submissions);
     this.$emit('close');
