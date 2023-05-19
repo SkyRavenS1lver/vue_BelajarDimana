@@ -17,6 +17,9 @@ const props = defineProps({
         </center>
       </div>
       <template v-for="post in posts" v-bind:key="posts">
+        <div>
+
+        
         <div v-if="post.publisher">
           <!-- Awakmu cuma perlu nambah nang njero div ae -->
           <h1 class="text-3xl">{{ post.publisher }} - {{ post.nama }}</h1>
@@ -46,13 +49,13 @@ const props = defineProps({
                   <p>Offline Course</p>
                 </div>
               </li>
-              <li>
-                <div v-if="post.durasiTotal">
+              <li v-if="post.durasiTotal">
+                <div>
                   <p>{{ post.durasiTotal }} Minggu</p>
                 </div>
               </li>
-              <li>
-                <div v-if="post.durasiMinggu">
+              <li v-if="post.durasiMinggu">
+                <div>
                   <p>{{ post.durasiMinggu }} Pertemuan Per Minggu</p>
                 </div>
               </li>        
@@ -87,10 +90,7 @@ const props = defineProps({
           </div>
         </div>
       </div>
-
-
-       
-       
+    </div>
       </template>
     </main>
   </template>

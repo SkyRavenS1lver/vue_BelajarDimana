@@ -21,7 +21,7 @@
           </div>
       </div>
 
-      <div class=" mx-[5%]">
+      <div class=" mx-[5%]" v-if="$route.fullPath == '/'">
         <p class="mb-[1rem] mt-[2rem] text-left ">Tipe Kelas</p>
         <div class="flex shadow-sm " role="group">
           <button id="semua" :class="{active:activeList2[0]}" @click="Active2(0)" value="semua" type="button" class="rounded-lg px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 ">

@@ -78,17 +78,21 @@ import CustomInput from './CustomInput.vue';
   
                 <!-- div button -->
                 <div>
-                  <RouterLink to="/maps">
-                    <button class="mr-[1rem] ml-[10vw] bg-hijau-telur-asin hover:bg-warna-hover text-white  hover:text-white py-2 px-4 border  hover:border-transparent rounded-xl">
+                    <RouterLink to="/maps" v-if="isAvail">
+                        <button :disabled="isAvail"  class="mr-[1rem] ml-[10vw] bg-hijau-telur-asin hover:bg-warna-hover text-white  hover:text-white py-2 px-4 border  hover:border-transparent rounded-xl">
                         <div class='flex'>
                             Lihat Peta
-                            <br>    
+                            <br>
                             <img src="http://belajardimana.com/gambar/Map-Trifold.png" alt="map" class='ml-[0.5rem]'>
                         </div>
-                       
-                    </button>
-                  </RouterLink>
-                    <button @click="showModal = true" class="bg-transparent hover:bg-gray-400  hover:text-white py-2 px-4 border border-gray-400 hover:border-transparent rounded-xl" >
+                        </button>
+                    </RouterLink>
+                    <button v-else :disabled="isAvail"  class="mr-[1rem] ml-[10vw] bg-black-100 hover:bg-red-500 text-white  hover:text-white py-2 px-4 border  hover:border-transparent rounded-xl">
+                        <div class='flex'>
+                            Filter Offline X
+                        </div>
+                        </button>
+                    <button  @click="showModal = true" class="bg-transparent hover:bg-gray-400  hover:text-white py-2 px-4 border border-gray-400 hover:border-transparent rounded-xl" >
                         Filter
                     </button>
                 </div>
@@ -116,12 +120,16 @@ export default {
       props: ['modelValue'],
       emits: ['update:modelValue'],
       showModal: false,
-      message: 'hello'
+      isAvail: true,
     }
   },
   methods: {
     Submitss(e){
         this.$emit('updating:submissions', e);
+        if (e[2]==1) {
+            this.isAvail = false;
+        }
+        else{this.isAvail = true;}
     }
   },
 }

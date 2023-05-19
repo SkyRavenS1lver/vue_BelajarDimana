@@ -111,7 +111,7 @@ export default {
         this.hasilFilter = [];
         for (let i = 0; i < this.posts.length; i++) {
           if(this.posts[i].biayaOri!=null){harga = this.posts[i].biayaOri}
-          if((this.dataFiltered[2]==1 && this.posts[i].idFC!=null) || (this.dataFiltered[2]==2 && this.posts[i].idOC!=null)){
+          if(((this.dataFiltered[2]==1 && this.posts[i].idFC!=null) || (this.dataFiltered[2]==2 && this.posts[i].idOC!=null)) && this.$route.fullPath == "/"){
           }
           else if(this.dataFiltered[3]!=0 && this.dataFiltered[3]!=this.posts[i].durasiMinggu){
 
@@ -143,7 +143,7 @@ export default {
   mounted() {
     let windowWidth = ref(window.innerWidth);
     if(windowWidth.value <=650){
-      this.perPages = 1;
+      this.perPages = 4;
     }
   },
 };
