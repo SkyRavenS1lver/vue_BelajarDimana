@@ -64,7 +64,10 @@
 
       // When on the last page
       if (this.currentPage === this.totalPages) {
-        return this.totalPages - this.maxVisibleButtons;
+        if(this.totalPages <= this.maxVisibleButtons){return 1;}
+        else{
+          return this.totalPages - this.maxVisibleButtons;
+        }
       }
 
       // When inbetween
@@ -72,9 +75,15 @@
     },
     pages() {
       const range = [];
+      let temp = this.maxVisibleButtons;
+      let i = this.startPage;
+      if(this.currentPage === this.totalPages){temp++;
+      if(this.totalPages > this.maxVisibleButtons){
+        i++
+      }}
       for (
-        let i = this.startPage;
-        i <= Math.min(this.startPage + this.maxVisibleButtons , this.totalPages);
+        i;
+        i <= Math.min(this.startPage + temp -1, this.totalPages);
         i++
       ) {
         range.push({

@@ -55,29 +55,5 @@ export default {
     };
   },
 
-  // methods: {
-  //   async getData() {
-  //     // this.search = this.$route.params.search;
-  //     var link = "https://api.belajardimana.com";
-  //     if (this.search){
-  //       link = link+"?Search="+this.search;
-  //     }
-  //     console.log(link)
-  //       try {
-  //       const headers = { "Content-Type": "application/json"};
-  //       fetch(link, { headers })
-  //       .then(response => response.json())
-  //       .then(data => (this.posts = data));
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-      
-  // },
-
-  // created() {
-  //   this.getData();
-  //   console.log(this.posts);
-  // },
 };
 </script>

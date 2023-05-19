@@ -233,7 +233,6 @@ methods: {
     this.clicked3 = e;
     if(e>=1){
       this.getKab(e);
-      console.log(this.dataKab);
     }
     else{this.dataKab = [];
       this.dataKec = [];}
@@ -244,7 +243,6 @@ methods: {
     this.clicked4 = e;
     if(e>=1){
       this.getKec(e);
-      console.log(this.dataKab);
     }
     else{this.dataKec = [];}
   },
@@ -274,7 +272,6 @@ methods: {
   },
   submits(){
     const submissions = [this.minValue, this.maxValue,this.clicked2, this.clicked, this.clicked3, this.clicked4, this.clicked5];
-    console.log("Jancukkk"+submissions);
     this.$emit('update:submissions', submissions);
     this.$emit('close');
   },
@@ -349,7 +346,6 @@ toInput.oninput = () => controlToInput(toSlider, fromInput, toInput, toSlider);
 },
 created() {
   this.getData();
-  console.log(this.dataProv);
 },
 }
   

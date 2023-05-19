@@ -21,6 +21,7 @@ import CustomPagination from './components/CustomPagination.vue';
 </template>
 <script>
 import NavBar from './components/NavBar.vue';
+import {ref} from 'vue';
 export default {
   components: { NavBar, CustomPagination },
   data() {
@@ -119,17 +120,13 @@ export default {
           else{
             if(this.dataFiltered[4] == 0){
             this.hasilFilter.push(this.posts[i])
-            console.log(this.posts[i].nama+" 4 ")
           }
             else if(this.dataFiltered[4] != this.posts[i].idProvinsi || this.posts[i].idProvinsi==null){
-              console.log(this.posts[i].nama+" 5 "+this.posts[i].idProvinsi)
-              console.log(this.dataFiltered[4]+"=====")
             }
               
             else{
                 if(this.dataFiltered[5] == 0){
                 this.hasilFilter.push(this.posts[i])
-                console.log(this.posts[i].nama+" 6 ")
               }
                 else if(this.dataFiltered[5] != this.posts[i].idKabupaten){}
                 else{
@@ -139,11 +136,13 @@ export default {
             }
           };
         }
- 
-
-      console.log("CUUUUUUK"+this.hasilFilter)
-      // this.temporaryData = this.hasilFilter;
     },
+  },
+  mounted() {
+    let windowWidth = ref(window.innerWidth);
+    if(windowWidth.value <=650){
+      this.perPages = 1;
+    }
   },
 };
 </script>
