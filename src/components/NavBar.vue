@@ -52,20 +52,20 @@ import CustomInput from './CustomInput.vue';
                                   class='ml-[1rem] outline-none bg-white w-[56.5%]'
                                   />
                                 <!-- logo search -->
-                                <div class="grid place-items-center h-full w-12 text-gray-300 ">  
+                                <!-- <div class="grid place-items-center h-full w-12 text-gray-300 ">  
                                         <RouterLink to="/">
                                             <img src="http://belajardimana.com/gambar/search.png" alt=""> 
                                         </RouterLink>
                                         
                                     
-                                </div>
+                                </div> -->
                                 <!-- Hard Reset to Home -->
                                 <a v-if="$route.fullPath == '/'" href="/">
-                                    <img src="http://belajardimana.com/gambar/close.png" style="width: 25px;" alt=""> 
+                                    <img src="http://belajardimana.com/gambar/close.png" style="width: 33px;" alt="" class="mr-[0.5rem]"> 
                                 </a>
                                 <!-- Hard Reset to Maps -->
                                 <a v-if="$route.fullPath == '/maps'" href="/maps">
-                                    <img src="http://belajardimana.com/gambar/close.png" style="width: 25px;" alt=""> 
+                                    <img src="http://belajardimana.com/gambar/close.png" style="width: 33px;" alt="" class="mr-[0.5rem]"> 
                                 </a>
   
   

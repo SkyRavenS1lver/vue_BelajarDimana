@@ -6,18 +6,18 @@
 
       <!-- kurang pop up value, min max buang aja kalo pop up bisa ditambahin -->
       <div class="sliders_control mx-[3rem]">
-          <input  id="fromSlider" type="range" v-model="minValue" min="50000" max="100000000"/>
-          <input  id="toSlider" type="range" v-model="maxValue" min="50000" max="100000000"/>
+          <input  id="fromSlider" type="range" v-model="minValue" min="100000" max="10000000"/>
+          <input  id="toSlider" type="range" v-model="maxValue" min="100000" max="10000000"/>
       </div>
 
       <div class="form_control class mx-[5%]">
           <div class="form_control_container">
-              <div class="form_control_container__time">Min</div>
-              <input ref="input" class="form_control_container__time__input" type="number" id="fromInput"  v-model="minValue" min="50000" max="100000000"/>
+              <div class="form_control_container__time text-left text-black ">Min</div>
+              <input ref="input" class="form_control_container__time__input"  type="number" id="fromInput"  v-model="minValue" min="100000" max="10000000"/>
           </div>
           <div class="form_control_container">
-              <div class="form_control_container__time">Max</div>
-              <input class="form_control_container__time__input" type="number" id="toInput" v-model="maxValue" min="50000" max="100000000"/>
+              <div class="form_control_container__time text-left text-black  ">Max</div>
+              <input class="form_control_container__time__input" type="number" id="toInput" v-model="maxValue" min="100000" max="10000000"/>
           </div>
       </div>
 
@@ -109,7 +109,7 @@
         <a @click="resets" class="underline hover:font-bold">Bersihkan Semua</a>
 
         <button @click="submits" class='border-black text-white bg-black px-4 py-3 rounded-xl text-sm font-medium hover:bg-white hover:text-black hover:border-2 hover:border-black'>
-          Tampilkan 10 Kursus
+          Tampilkan Hasil
         </button>
       </div>
 
@@ -408,7 +408,7 @@ input[type=range]::-webkit-slider-thumb:active {
 
 input[type="number"] {
   color: #8a8383;
-  width: 50px;
+  width: 200px;
   height: 30px;
   font-size: 20px;
   border: none;

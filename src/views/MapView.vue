@@ -32,27 +32,29 @@ const props = defineProps({
     </l-map>
 
     <VueSidePanel v-model="isOpened" side="left">  
-        <div style="height: 100%; max-width: 30vw;" class="block bg-white p-3 dark:bg-neutral-700 text-neutral-800 dark:text-neutral-50 text-2xl py-5">
+        <div style="height: 100%; max-width: 350px;" class="block bg-white p-3 dark:bg-neutral-700 text-neutral-800 dark:text-neutral-50 text-2xl py-5">
               <Button @click="isOpened=false, data=null, allList=true"
             style="width: 2.5rem;">
           <img src="http://belajardimana.com/gambar/left-arrow.png"/>
           </Button>
         <div v-if="data" style="max-width: 80%; padding-left: 4rem;">
           <h2 v-if="data.nama" class="mb-5"> {{ data.nama }} - {{ data.publisher }}</h2>
-          <img v-if="data.linkGambar" class="w-half shadow-[0_2px_15px_-3px_rgba(0,0,0,1),0_10px_20px_-2px_rgba(0,0,0,0.04)]" :src="data.linkGambar" 
+          <img v-if="data.linkGambar" class="w-half shadow-[0_2px_15px_-3px_rgba(0,0,0,1),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-lg" :src="data.linkGambar" 
                 alt="Placeholder image">
-          <img v-else class="w-half shadow-[0_2px_15px_-3px_rgba(0,0,0,1),0_10px_20px_-2px_rgba(0,0,0,0.04)]" src="http://belajardimana.com/gambar/placeholder.png" 
+          <img v-else class="w-half shadow-[0_2px_15px_-3px_rgba(0,0,0,1),0_10px_20px_-2px_rgba(0,0,0,0.04)] rounded-lg" src="http://belajardimana.com/gambar/placeholder.png" 
                 alt="Placeholder image">
-          <h2 v-if="data.biayaOri" class="my-2 mt-10"> Rp {{ data.biayaOri }}  </h2>
-          <h2 v-if="data.durasiMinggu" class="my-2"> {{ data.durasiMinggu }} Pertemuan Per Minggu </h2>
-          <h2 v-if="data.alamat" class="my-2"> {{ data.alamat }} </h2>
-          <h2 v-if="data.linkDaftar" class="my-2"> {{ data.linkDaftar }} </h2>
+          <h2 v-if="data.biayaOri" class="my-2 mt-10 text-lg font-bold"> Rp {{ data.biayaOri }}  </h2>
+          <h2 v-if="data.durasiMinggu" class="my-2 text-[1rem]"> {{ data.durasiMinggu }} Pertemuan Per Minggu </h2>
+          <h2 v-if="data.alamat" class="my-2 text-[1rem]"> {{ data.alamat }} </h2>
+          <button v-if="data.linkDaftar" class=" text-white mt-[1rem] bg-hijau-telur-asin px-5 py-3 rounded-xl">
+            <a v-bind:href=" data.linkDaftar " class="text-lg">Kunjungi Website</a>  
+          </button>
         </div>
       </div>    
     </VueSidePanel>
 
     
-    <VueSidePanel v-model="allList" side="left">
+    <VueSidePanel v-model="allList" side="left" style="width:350px !important">
       <div v-if="model.length==0" style="height: 100%; padding-top: 50vh;"  class="block bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 text-neutral-800 dark:text-neutral-50 text-3xl py-10">
         <p>Nothing to show</p>
     </div>
@@ -69,7 +71,6 @@ const props = defineProps({
                 <p v-if="datas.alamat" class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
                   {{ datas.alamat }}
                 </p>
-                <button></button>
               </div>
             </div>
         </div>
