@@ -34,12 +34,12 @@ import CustomInput from './CustomInput.vue';
                             rounded-[2rem] focus-within:shadow-lg bg-white overflow-hidden  "
                             style="outline-color:#BDBDBD">
                                 <!-- select kiri -->
-                                <select id="states" class="w-[30.5%] rounded-l-[2rem] h-full bg-gray-50 border-2 text-gray-900 text-sm border-l-gray-100  border-l-2  block p-2.5 focus: outline-none  ">
+                                <!-- <select id="states" class="w-[30.5%] rounded-l-[2rem] h-full bg-gray-50 border-2 text-gray-900 text-sm border-l-gray-100  border-l-2  block p-2.5 focus: outline-none  ">
                                     <option selected value="default">Search By:</option>
                                     <option value="CA">Nama Instansi</option>
                                     <option value="TX">Daerah</option>
                                     <option value="WH">Akreditas</option>
-                                </select>
+                                </select> -->
                                 <!-- select kiri end -->
   
                                 <!-- input text -->
@@ -49,7 +49,7 @@ import CustomInput from './CustomInput.vue';
                                   v-model="modelValue"
                                   :value="modelValue"
                                   @input="$emit('update:modelValue', $event.target.value)"
-                                  class='ml-[1rem] outline-none bg-white w-[56.5%]'
+                                  class='ml-[1rem] outline-none bg-white w-[85%]'
                                   />
                                 <!-- logo search -->
                                 <!-- <div class="grid place-items-center h-full w-12 text-gray-300 ">  

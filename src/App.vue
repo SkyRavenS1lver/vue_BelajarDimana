@@ -12,7 +12,7 @@ import CustomPagination from './components/CustomPagination.vue';
   <RouterView v-if="$route.fullPath == '/'" :model="shownPage" style="z-index: 0;"/>
   <RouterView v-else :model="offlinePage" style="z-index: 0;"/>
   <center>
-  <CustomPagination v-if="$route.fullPath == '/' && temporaryData.length>perPages"
+  <CustomPagination z-index="0" v-if="$route.fullPath == '/' && temporaryData.length>perPages"
       :totalPages="total"
       :perPage="perPages"
       :currentPage="currentPage"

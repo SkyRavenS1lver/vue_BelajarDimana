@@ -2,6 +2,7 @@
 import { RouterLink } from 'vue-router'
 import Cards from '../components/Cards.vue';
 import CustomInput from '../components/CustomInput.vue';
+import DetailModal from '../components/DetailModal.vue';
 
 const props = defineProps({
   model: {
@@ -27,18 +28,21 @@ const props = defineProps({
       </template>
       <template v-for="post in model" v-bind:key="model">
         <div class='m-[3rem]'>
-        <RouterLink v-if="post.idOC" :to="{ name: 'Profile', params:{id:post.idOC, mode:OC}}">
+        <!-- <RouterLink v-if="post.idOC" :to="{ name: 'Profile', params:{id:post.idOC, mode:OC}}">
           <Cards :msg="post" :mode="'Online Course'" :id="post.idOC"/>
         </RouterLink>
         
         <RouterLink v-else-if="post.idFC" :to="{ name: 'Profile', params:{id:post.idFC, mode:FC}}">
           <Cards :msg="post" :mode="'Offline Course'" :id="post.idFC"/>
-        </RouterLink>
+        </RouterLink> -->
+
+        <Cards @click="showDetails(post)" :msg="post" :mode="'Online Course'" :id="post.idOC"/>
+        
         </div>
-      </template> 
-      
+      </template>
     </div>
   </main>
+  <DetailModal style="z-index: 1000;" v-show="showModalDetail" :post="showedPost" @close-modal="showModalDetail = false"/>
 </template>
 
 <script>
@@ -50,10 +54,18 @@ export default {
       emits: ['update:modelValue'],
       OC:'OC',
       FC: 'FC',
-      
-
+      showModalDetail:false,
+      showedPost:null,
     };
   },
+  methods: {
+      showDetails(posted){
+        this.showedPost = posted;
+        console.log(this.showedPost);
+        this.showModalDetail = true;
+        this.emits('p', false);
+      }
+    },
 
 };
 </script>

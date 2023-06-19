@@ -12,9 +12,9 @@ const props = defineProps({
 
 <template>
   <div style="height:90vh; width:100vw">
-    <l-map ref="map" v-model:zoom="zoom" :center="[47.41322, -1.219482]" :options="{zoomControl:false}">
+    <l-map ref="map" v-model:zoom="zoom" v-model:center="centre" :options="{zoomControl:false}">
     <button style="z-index: 500; width: 6rem; height: 3.5rem;" @click="allList = true"
-    class="bg-neutral-500 hover:bg-neutral-400 text-white font-bold py-2 px-4 border-b-4 border-neutral-700 hover:border-neutral-500 rounded">View All Data:</button>
+    class=" bg-hijau-telur-asin hover:bg-warna-hover text-white font-bold py-2 px-4 border-b-4 border-warna-hover hover:border-warna-hover-lagi  rounded m-2">View All Data:</button>
       <l-tile-layer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         layer-type="base"
@@ -22,7 +22,7 @@ const props = defineProps({
       ></l-tile-layer>
       <l-control-zoom position="topright" ></l-control-zoom>
       <template v-for="post in model" :key="model">
-        <l-marker v-if="post.idFC"  :lat-lng="[post.latitude, post.longitude]" @click="isOpened = true, data = post">
+        <l-marker v-if="post.idFC"  :lat-lng="[post.latitude, post.longitude]" @click="clicked(post,[post.latitude, post.longitude])">
           <l-icon :icon-size= [40,40] icon-url="http://belajardimana.com/gambar/location.png" > </l-icon>
           <!-- <l-popup ref="popup">
             {{ post.nama }}
@@ -31,7 +31,8 @@ const props = defineProps({
       </template>
     </l-map>
 
-    <VueSidePanel v-model="isOpened" side="left">  
+    <VueSidePanel v-model="isOpened" side="left">
+        
         <div style="height: 100%; max-width: 350px;" class="block bg-white p-3  text-neutral-800  text-2xl py-5">
               <Button @click="isOpened=false, data=null, allList=true"
             style="width: 2.5rem;">
@@ -63,7 +64,7 @@ const props = defineProps({
      
         <template v-for="datas in model" :key="model">
           <div>
-            <div @click="isOpened=true, allList=false, data = datas">
+            <div @click="isOpened=true, allList=false, data = datas, clicked(data,[data.latitude, data.longitude])">
               <div class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
                 <h5 v-if="datas.nama && datas.publisher" class="mb-2 text-xl font-medium leading-tight text-neutral-800 ">
                   {{ datas.nama }} - {{ datas.publisher }}
@@ -97,12 +98,39 @@ export default {
 },
   data() {
     return {
-      zoom: 2,
+      zoom: 8,
       data:null,
       isOpened: false,
       allList:false,
       check:true,
+      centre:[-7.789536300927503, 110.3767915176348],
     };
+  },
+  methods:{
+    async clicked(post, coordinate){
+      // this.centre = [this.centre[0]+0.000000000000001, this.centre[1]+0.000000000000001];
+      // window.setTimeout(() => {
+      // this.centre = coordinate;
+      //   },0);
+      // this.isOpened = true;
+      // this.data = post;
+      // window.setTimeout(() => {
+      // this.zoom=12;
+      //   },250);
+      // Promise.all([
+      //   this.zoom=12
+      // ]).then(
+      // )
+      window.setTimeout(() => {
+          this.zoom=12;
+        },250);
+      window.setTimeout(() => {
+        this.centre = coordinate;
+        },0);
+      
+      this.isOpened = true;
+      this.data = post;
+    },
   },
 };
 </script>
