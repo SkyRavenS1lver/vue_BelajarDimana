@@ -2,10 +2,10 @@
   <nav aria-label="Page navigation example">
     <ul class="pagination">
       <li class="pagination-item">
-        <button type="button" @click="onClickFirstPage" :disabled="isInFirstPage" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">First</button>
+        <button type="button" @click="onClickFirstPage" :disabled="isInFirstPage" class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 ">First</button>
       </li>
       <li class="pagination-item">
-        <button type="button" @click="onClickPreviousPage" :disabled="isInFirstPage" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</button>
+        <button type="button" @click="onClickPreviousPage" :disabled="isInFirstPage" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">Previous</button>
       </li>
       <li
       v-for="page in pages"
@@ -16,16 +16,16 @@
         :disabled="page.isDisabled" 
         @click="onClickPage(page.name)" 
         :class="{ active: isPageActive(page.name) }"
-        class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+        class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
         {{ page.name }}
       </button>
     </li>
       <li class="pagination-item">
-        <button type="button" @click="onClickNextPage" :disabled="isInLastPage" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</button>
+        <button type="button" @click="onClickNextPage" :disabled="isInLastPage" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 ">Next</button>
       </li>
   
       <li class="pagination-item">
-        <button type="button"  @click="onClickLastPage" :disabled="isInLastPage" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Last</button>
+        <button type="button"  @click="onClickLastPage" :disabled="isInLastPage" class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 ">Last</button>
       </li>
     </ul>
     </nav>

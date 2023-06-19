@@ -32,7 +32,7 @@ const props = defineProps({
     </l-map>
 
     <VueSidePanel v-model="isOpened" side="left">  
-        <div style="height: 100%; max-width: 350px;" class="block bg-white p-3 dark:bg-neutral-700 text-neutral-800 dark:text-neutral-50 text-2xl py-5">
+        <div style="height: 100%; max-width: 350px;" class="block bg-white p-3  text-neutral-800  text-2xl py-5">
               <Button @click="isOpened=false, data=null, allList=true"
             style="width: 2.5rem;">
           <img src="http://belajardimana.com/gambar/left-arrow.png"/>
@@ -55,20 +55,20 @@ const props = defineProps({
 
     
     <VueSidePanel v-model="allList" side="left" style="width:350px !important">
-      <div v-if="model.length==0" style="height: 100%; padding-top: 50vh;"  class="block bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 text-neutral-800 dark:text-neutral-50 text-3xl py-10">
+      <div v-if="model.length==0" style="height: 100%; padding-top: 50vh;"  class="block bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]  text-neutral-800  text-3xl py-10">
         <p>Nothing to show</p>
     </div>
-    <div v-else style="height: 100%;"  class="block bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 text-neutral-800 dark:text-neutral-50 text-3xl py-10">
+    <div v-else style="height: 100%;"  class="block bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]  text-neutral-800  text-3xl py-10">
       <h1 class="mb-5">Data Listed:</h1>
      
         <template v-for="datas in model" :key="model">
           <div>
             <div @click="isOpened=true, allList=false, data = datas">
-              <div class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 dark:md:hover:bg-neutral-500">
-                <h5 v-if="datas.nama && datas.publisher" class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+              <div class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
+                <h5 v-if="datas.nama && datas.publisher" class="mb-2 text-xl font-medium leading-tight text-neutral-800 ">
                   {{ datas.nama }} - {{ datas.publisher }}
                 </h5>
-                <p v-if="datas.alamat" class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                <p v-if="datas.alamat" class="mb-4 text-base text-neutral-600 ">
                   {{ datas.alamat }}
                 </p>
               </div>
