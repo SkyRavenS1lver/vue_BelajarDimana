@@ -23,13 +23,13 @@ const props = defineProps({
         </div>
 
         <div class="flex flex-wrap">
-          <img v-if="post.linkGambar" class="md:w-full  my-[1rem] px-[2rem]" :src="post.linkGambar" 
+          <img v-if="post.linkGambar" class="w-[50vw]  my-[1rem] px-[2rem]" :src="post.linkGambar" 
                 alt="Placeholder image">
-          <img v-else class="w-[600px] my-[1rem] bg-center" src="http://belajardimana.com/gambar/placeholder.png" 
+          <img v-else class="w-[400px] h-[] my-[1rem] bg-center" src="http://belajardimana.com/gambar/placeholder.png" 
                 alt="Placeholder image">
 
         
-          <div class=' w-[45%] flex flex-col ml-[2rem]'>
+          <div class=' w-[45%] flex flex-col ml-[2rem] mr-[4rem]'>
            
             
             <h1 v-if="post.nama" class="lg:text-2xl text-left">Fasilitas</h1>
@@ -57,7 +57,7 @@ const props = defineProps({
 
            
           </div>
-           <div class="mt-[1rem] max-w-sm rounded-xl overflow-hidden shadow-lg border-2 h-[150x] w-[200px] mx-[1rem] sm:mx-[0px]">
+           <div class="mt-[1rem] max-w-sm rounded-xl overflow-hidden shadow-lg border-2 h-[150x] w-[200px] mx-[1rem] sm:mx-[0px] ml-3">
               <div class="flex flex-col m-4">
                 <h1 class="text-xl">
                   Pendaftaran
@@ -69,14 +69,14 @@ const props = defineProps({
                   <p class="text-lg font-bold">Rp {{ post.biayaDiskon }}</p>
                 </div>
                 <div v-if="post.linkWeb">
-                  <button  class='text-white  bg-hijau-telur-asin px-4  rounded-xl' style="margin-top:0.5rem !important" >
+                  <button  class='text-white  bg-hijau-telur-asin px-4 py-2 pb-3 rounded-xl' style="margin-top:0.5rem !important" >
                     <a v-bind:href="post.linkWeb">
                       Daftar Sekarang
                     </a>
                   </button>
                 </div>
                 <div v-if="post.linkDaftar">
-                  <button  class='text-white  bg-hijau-telur-asin px-4  rounded-xl' style="margin-top:0.5rem !important" >
+                  <button  class='text-white  bg-hijau-telur-asin px-4 py-3  rounded-xl' style="margin-top:0.5rem !important" >
                       <a v-bind:href="post.linkDaftar">
                         Daftar Sekarang
                       </a>
@@ -115,7 +115,7 @@ const props = defineProps({
   
   text-align: center;
   background-color: white;
-  height: 75vh;
+  height: fit-content;
   width: 600px;
   margin-top: 5%;
   padding: 30px 0;
@@ -144,7 +144,7 @@ p {
   font-size: 16px;
   margin: 20px 0;
 }
-
+/* 
 button {
   background-color: #ac003e;
   width: 150px;
@@ -153,5 +153,5 @@ button {
   font-size: 14px;
   border-radius: 16px;
   margin-top: 50px;
-}
+} */
 </style>
