@@ -1,5 +1,4 @@
 <script setup>
-import Cards from '../components/Cards.vue';
 import { VueSidePanel } from 'vue3-side-panel';
 import 'vue3-side-panel/dist/vue3-side-panel.css'
 const props = defineProps({
@@ -24,9 +23,6 @@ const props = defineProps({
       <template v-for="post in model" :key="model">
         <l-marker v-if="post.idFC"  :lat-lng="[post.latitude, post.longitude]" @click="clicked(post,[post.latitude, post.longitude])">
           <l-icon :icon-size= [40,40] icon-url="http://belajardimana.com/gambar/location.png" > </l-icon>
-          <!-- <l-popup ref="popup">
-            {{ post.nama }}
-           </l-popup> -->
         </l-marker>
       </template>
     </l-map>
@@ -108,19 +104,7 @@ export default {
   },
   methods:{
     async clicked(post, coordinate){
-      // this.centre = [this.centre[0]+0.000000000000001, this.centre[1]+0.000000000000001];
-      // window.setTimeout(() => {
-      // this.centre = coordinate;
-      //   },0);
-      // this.isOpened = true;
-      // this.data = post;
-      // window.setTimeout(() => {
-      // this.zoom=12;
-      //   },250);
-      // Promise.all([
-      //   this.zoom=12
-      // ]).then(
-      // )
+
       window.setTimeout(() => {
           this.zoom=12;
         },250);

@@ -235,7 +235,14 @@ methods: {
       this.getKab(e);
     }
     else{this.dataKab = [];
-      this.dataKec = [];}
+      this.activeList4[this.clicked4] = false;
+      this.clicked4 = 0;
+      this.activeList4[this.clicked4] = true;
+      this.dataKec = [];
+      this.activeList5[this.clicked5] = false;
+      this.clicked5 = 0;
+      this.activeList5[this.clicked5] = true;
+    }
   },
   Active4(e){
     this.activeList4[this.clicked4] = false;
@@ -244,7 +251,11 @@ methods: {
     if(e>=1){
       this.getKec(e);
     }
-    else{this.dataKec = [];}
+    else{this.dataKec = [];
+      this.activeList5[this.clicked5] = false;
+      this.clicked5 = 0;
+      this.activeList5[this.clicked5] = true;
+    }
   },
   Active5(e){
     this.activeList5[this.clicked5] = false;
@@ -357,9 +368,6 @@ created() {
 .range_container {
   display: flex;
   flex-direction: column;
-  /* width: 80%; */
-  /* margin: 0rem 2rem 0rem 2rem; */
-  /* margin: 35% auto; */
 }
 
 .sliders_control {

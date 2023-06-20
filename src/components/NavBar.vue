@@ -33,14 +33,6 @@ import CustomInput from './CustomInput.vue';
                             <div class=" outline h-[45px] min-w-[200px] max-w-[300px] relative flex items-center md:min-w-[350px] xl:min-w-[400px] 
                             rounded-[2rem] focus-within:shadow-lg bg-white overflow-hidden text-black"
                             style="outline-color:#BDBDBD">
-                                <!-- select kiri -->
-                                <!-- <select id="states" class="w-[30.5%] rounded-l-[2rem] h-full bg-gray-50 border-2 text-gray-900 text-sm border-l-gray-100  border-l-2  block p-2.5 focus: outline-none  ">
-                                    <option selected value="default">Search By:</option>
-                                    <option value="CA">Nama Instansi</option>
-                                    <option value="TX">Daerah</option>
-                                    <option value="WH">Akreditas</option>
-                                </select> -->
-                                <!-- select kiri end -->
   
                                 <!-- input text -->
                                 <!-- <input type="text" ref="inputSearch" class='ml-[1rem] outline-none bg-white w-[56.5%]' placeholder="Belajar Dimana"> -->
@@ -52,13 +44,6 @@ import CustomInput from './CustomInput.vue';
                                   class='ml-[1rem] outline-none bg-white w-[85%]'
                                   />
                                 <!-- logo search -->
-                                <!-- <div class="grid place-items-center h-full w-12 text-gray-300 ">  
-                                        <RouterLink to="/">
-                                            <img src="http://belajardimana.com/gambar/search.png" alt=""> 
-                                        </RouterLink>
-                                        
-                                    
-                                </div> -->
                                 <!-- Hard Reset to Home -->
                                 <a v-if="$route.fullPath == '/'" href="/">
                                     <img src="http://belajardimana.com/gambar/close.png" style="width: 33px;" alt="" class="mr-[0.5rem]"> 
@@ -87,7 +72,7 @@ import CustomInput from './CustomInput.vue';
                         </div>
                         </button>
                     </RouterLink>
-                    <button v-else :disabled="isAvail"  class="mr-[1rem] ml-[10vw] bg-black-100 hover:bg-red-500 text-white  hover:text-white py-2 px-4 border  hover:border-transparent rounded-xl">
+                    <button v-else :disabled="isAvail"  class="mr-[1rem] ml-[10vw] bg-black hover:bg-red-500 text-white  hover:text-white py-2 px-4 border  hover:border-transparent rounded-xl">
                         <div class='flex'>
                             Filter Offline X
                         </div>
