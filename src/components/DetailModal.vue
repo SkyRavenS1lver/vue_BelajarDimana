@@ -25,7 +25,7 @@ const props = defineProps({
         <div class="flex flex-wrap">
           <img v-if="post.linkGambar" class="w-[50vw]  my-[1rem] px-[2rem]" :src="post.linkGambar" 
                 alt="Placeholder image">
-          <img v-else class="w-[400px] h-[] my-[1rem] bg-center" src="http://belajardimana.com/gambar/placeholder.png" 
+          <img v-else class="w-[50vw]  my-[1rem] px-[2rem]" src="http://belajardimana.com/gambar/placeholder.png" 
                 alt="Placeholder image">
 
         
