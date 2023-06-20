@@ -63,7 +63,6 @@ export default {
         this.showedPost = posted;
         console.log(this.showedPost);
         this.showModalDetail = true;
-        this.emits('p', false);
       }
     },
 
