@@ -26,12 +26,12 @@ import CustomInput from './CustomInput.vue';
                 <!-- flex isi logo + teks belajar dimana end -->
             
                 <!-- search bar -->
-                <div class='flex items-center content-evenly'>
+                <div class='flex items-center content-evenly bg-white'>
                     <!-- <form action="#"> -->
                         <div class="grid place-items-center">
                             <!-- search bar meneh :v -->
                             <div class=" outline h-[45px] min-w-[200px] max-w-[300px] relative flex items-center md:min-w-[350px] xl:min-w-[400px] 
-                            rounded-[2rem] focus-within:shadow-lg bg-white overflow-hidden  "
+                            rounded-[2rem] focus-within:shadow-lg bg-white overflow-hidden text-black"
                             style="outline-color:#BDBDBD">
                                 <!-- select kiri -->
                                 <!-- <select id="states" class="w-[30.5%] rounded-l-[2rem] h-full bg-gray-50 border-2 text-gray-900 text-sm border-l-gray-100  border-l-2  block p-2.5 focus: outline-none  ">

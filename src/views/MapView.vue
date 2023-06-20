@@ -47,8 +47,8 @@ const props = defineProps({
           <h2 v-if="data.biayaOri" class="my-2 mt-10 text-lg font-bold"> Rp {{ data.biayaOri }}  </h2>
           <h2 v-if="data.durasiMinggu" class="my-2 text-[1rem]"> {{ data.durasiMinggu }} Pertemuan Per Minggu </h2>
           <h2 v-if="data.alamat" class="my-2 text-[1rem]"> {{ data.alamat }} </h2>
-          <button v-if="data.linkDaftar" class=" text-white mt-[1rem] bg-hijau-telur-asin px-5 py-3 rounded-xl">
-            <a v-bind:href=" data.linkDaftar " class="text-lg">Kunjungi Website</a>  
+          <button v-if="data.linkDaftar" class=" text-white  bg-hijau-telur-asin px-5 pt-1 pb-3 rounded-xl">
+            <a v-bind:href=" data.linkDaftar " class="text-lg " >Kunjungi Website</a>  
           </button>
         </div>
       </div>    
@@ -57,7 +57,7 @@ const props = defineProps({
     
     <VueSidePanel v-model="allList" side="left" style="width:350px !important">
       <div v-if="model.length==0" style="height: 100%; padding-top: 50vh;"  class="block bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]  text-neutral-800  text-3xl py-10">
-        <p>Nothing to show</p>
+        <p class="items-center text-center text-3xl">Nothing to show</p>
     </div>
     <div v-else style="height: 100%;"  class="block bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]  text-neutral-800  text-3xl py-10">
       <h1 class="mb-5">Data Listed:</h1>

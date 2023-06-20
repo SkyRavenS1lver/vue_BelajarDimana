@@ -16,25 +16,25 @@ const props = defineProps({
         <div v-if="post!=null">        
         <div v-if="post.publisher">
           <!-- Awakmu cuma perlu nambah nang njero div ae -->
-          <h1 class="text-3xl">{{ post.publisher }} - {{ post.nama }}</h1>
+          <h1 class="text-3xl mx-[0.5rem]">{{ post.publisher }} - {{ post.nama }}</h1>
         </div>
         <div v-if="post.alamat">
           <p>{{ post.alamat }}</p>
         </div>
 
         <div class="flex flex-wrap">
-          <img v-if="post.linkGambar" class="md:w-full lg:w-[50vw] my-[1rem]" :src="post.linkGambar" 
+          <img v-if="post.linkGambar" class="md:w-full  my-[1rem] px-[2rem]" :src="post.linkGambar" 
                 alt="Placeholder image">
-          <img v-else class="w-[600px] my-[1rem]" src="http://belajardimana.com/gambar/placeholder.png" 
+          <img v-else class="w-[600px] my-[1rem] bg-center" src="http://belajardimana.com/gambar/placeholder.png" 
                 alt="Placeholder image">
 
         
           <div class=' w-[45%] flex flex-col ml-[2rem]'>
            
             
-            <h1 v-if="post.nama" class="lg:text-2xl">Fasilitas</h1>
+            <h1 v-if="post.nama" class="lg:text-2xl text-left">Fasilitas</h1>
 
-            <ul class="list-disc mx-[1.5rem] lg:text-[1rem]">
+            <ul class="list-disc mx-[1.5rem] lg:text-[1rem] text-left">
               <li>
                 <div v-if="post.idOC">
                   <p>Online Course</p>
@@ -55,7 +55,9 @@ const props = defineProps({
               </li>        
             </ul>
 
-            <div class="mt-[1rem] max-w-sm rounded-xl overflow-hidden shadow-lg border-2 h-[150x] w-[200px]">
+           
+          </div>
+           <div class="mt-[1rem] max-w-sm rounded-xl overflow-hidden shadow-lg border-2 h-[150x] w-[200px] mx-[1rem] sm:mx-[0px]">
               <div class="flex flex-col m-4">
                 <h1 class="text-xl">
                   Pendaftaran
@@ -67,21 +69,20 @@ const props = defineProps({
                   <p class="text-lg font-bold">Rp {{ post.biayaDiskon }}</p>
                 </div>
                 <div v-if="post.linkWeb">
-                  <button  class='text-white mt-[1rem] bg-hijau-telur-asin px-4 py-2 rounded-xl' >
+                  <button  class='text-white  bg-hijau-telur-asin px-4  rounded-xl' style="margin-top:0.5rem !important" >
                     <a v-bind:href="post.linkWeb">
                       Daftar Sekarang
                     </a>
                   </button>
                 </div>
                 <div v-if="post.linkDaftar">
-                  <button  class='text-white mt-[1rem] bg-hijau-telur-asin px-4 py-2 rounded-xl' >
+                  <button  class='text-white  bg-hijau-telur-asin px-4  rounded-xl' style="margin-top:0.5rem !important" >
                       <a v-bind:href="post.linkDaftar">
                         Daftar Sekarang
                       </a>
                   </button>
                 </div>
             </div>
-          </div>
         </div>
       </div>
       <!-- </template> -->
